@@ -1,6 +1,6 @@
 # 阿里巴巴 / 阿里云：安全运营Agent与空间隔离
 
-核验日期：2026-09-30。本文关注官方公开能力和研究，不描述未公开内部系统。
+初始核验：2026-09-30；本轮增补：2026-10-01（旧来源日期不批量刷新）。本文关注官方公开能力和研究，不描述未公开内部系统。
 
 ## 公开实践
 
@@ -29,3 +29,11 @@
 
 - [Security Operations Agent](https://www.alibabacloud.com/help/en/content-moderation/latest/how-to-use-the-security-operation-agent)：product_documentation。
 - [Model Studio workspaces](https://www.alibabacloud.com/help/en/model-studio/use-workspace)：product_documentation。
+
+## 2026-10-01补充：机审、人审与发布访问状态
+
+[VOD自动审核文档](https://www.alibabacloud.com/help/en/vod/user-guide/automated-review-1)说明人工结果覆盖机审，同时明确已有播放链接可能仍有效。AI短剧中台应将裁决、发布、撤销、恢复分开留回执；不要仅改审核字段便标记“下架完成”。
+
+文档的审核结果图像保存时限与默认模板覆盖也影响证据/模态设计。不要因为平台支持音画能力，就假设当前模板已经启用；具体配置及地域另验。
+
+这是2026-09-17文档更新的产品能力分析，不是客户事故或独立ROI；详见[人审与访问撤销Case](../cases/vod-review-revocation.md)。

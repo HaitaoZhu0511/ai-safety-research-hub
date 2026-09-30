@@ -1,5 +1,5 @@
 {
-  "reviewed_at": "2026-09-30",
+  "reviewed_at": "2026-10-01",
   "notice": "台账不是网页快照；不提供未生成的内容哈希",
   "reviews": [
     {
@@ -56,7 +56,127 @@
       "version_hint": null,
       "full_document_verified": false,
       "snapshot_ref": null,
-      "next_check": "重新取得官方正文并核验部署限制"
+      "next_check": "2026-10-01复查仅返回JavaScript提示；继续取得官方正文，不以搜索摘录升级证据等级"
+    },
+    {
+      "source_id": "openai-moderation",
+      "evidence_scope": "selected_official_page_sections",
+      "version_hint": null,
+      "full_document_verified": false,
+      "snapshot_ref": null,
+      "next_check": "固定实际接口版本，验证输入/工具内容覆盖、检测错误与完整输出后分数的门禁时序"
+    },
+    {
+      "source_id": "openai-agent-safety",
+      "evidence_scope": "selected_official_page_sections",
+      "version_hint": null,
+      "full_document_verified": false,
+      "snapshot_ref": null,
+      "next_check": "固定实际使用版本并在授权环境验证支持范围"
+    },
+    {
+      "source_id": "openai-agent-evals",
+      "evidence_scope": "selected_official_page_sections",
+      "version_hint": null,
+      "full_document_verified": false,
+      "snapshot_ref": null,
+      "next_check": "复查Evals退役与迁移范围，保留可独立执行的Trace、样本和裁判版本"
+    },
+    {
+      "source_id": "openai-deprecations",
+      "evidence_scope": "selected_official_page_sections",
+      "version_hint": null,
+      "full_document_verified": false,
+      "snapshot_ref": null,
+      "next_check": "上线前复核时间表并验证迁移"
+    },
+    {
+      "source_id": "anthropic-classifiers-next",
+      "evidence_scope": "selected_official_page_sections",
+      "version_hint": null,
+      "full_document_verified": false,
+      "snapshot_ref": null,
+      "next_check": "核验论文全文的攻击预算、正常流量和开销口径；外部级联方案单独测试中文风险域"
+    },
+    {
+      "source_id": "anthropic-cyber-campaign",
+      "evidence_scope": "selected_official_page_sections",
+      "version_hint": null,
+      "full_document_verified": false,
+      "snapshot_ref": null,
+      "next_check": "核验报告全文、勘误与证据范围，不将厂商归因当独立事实，不复现外部攻击"
+    },
+    {
+      "source_id": "anthropic-misuse-sep2026",
+      "evidence_scope": "selected_official_page_sections",
+      "version_hint": null,
+      "full_document_verified": false,
+      "snapshot_ref": null,
+      "next_check": "继续读取完整报告，核对活动类别、报告期和精确发布日期；概览不能替代全文"
+    },
+    {
+      "source_id": "meta-firewall",
+      "evidence_scope": "official_readme",
+      "version_hint": "main (mutable)",
+      "full_document_verified": false,
+      "snapshot_ref": null,
+      "next_check": "锁定仓库提交与各扫描器许可/依赖，授权沙箱测信号、真实动作拦截和正常任务"
+    },
+    {
+      "source_id": "meta-guard4",
+      "evidence_scope": "selected_official_page_sections",
+      "version_hint": "Llama Guard 4",
+      "full_document_verified": false,
+      "snapshot_ref": null,
+      "next_check": "确认具体权重/许可与输入支持，单测中文、文本图像联合和生成素材适用性"
+    },
+    {
+      "source_id": "ms-prompt-shields",
+      "evidence_scope": "selected_official_page_sections",
+      "version_hint": null,
+      "full_document_verified": false,
+      "snapshot_ref": null,
+      "next_check": "核验Spotlighting预览与Chat Completions范围，记录detected/filtered、Token开销和正常文档对照"
+    },
+    {
+      "source_id": "aws-reasoning",
+      "evidence_scope": "selected_official_page_sections",
+      "version_hint": null,
+      "full_document_verified": false,
+      "snapshot_ref": null,
+      "next_check": "复核政策抽取/变量覆盖与语言限制，测试逻辑相容但证据失效的正常/风险对照"
+    },
+    {
+      "source_id": "google-saif-assessment",
+      "evidence_scope": "selected_official_page_sections",
+      "version_hint": null,
+      "full_document_verified": false,
+      "snapshot_ref": null,
+      "next_check": "核验工具当前状态，以自有项目问卷生成风险清单并独立验证控制，不称为认证"
+    },
+    {
+      "source_id": "alibaba-vod-review",
+      "evidence_scope": "selected_official_page_sections",
+      "version_hint": null,
+      "full_document_verified": false,
+      "snapshot_ref": null,
+      "next_check": "核验关联API、模板/地域和证据期限；仅在自有环境测试已有URL、回调与改判恢复"
+    },
+    {
+      "source_id": "tencent-video-review",
+      "evidence_scope": "selected_official_page_sections",
+      "version_hint": null,
+      "full_document_verified": false,
+      "snapshot_ref": null,
+      "next_check": "核验截帧/音画覆盖、API及限额；自有环境分别验收公有读、私有读和CDN路径"
+    },
+    {
+      "source_id": "volc-runtime-security",
+      "evidence_scope": "official_search_excerpt",
+      "version_hint": null,
+      "full_document_verified": false,
+      "snapshot_ref": null,
+      "next_check": "取得官方正文后复查责任与部署条件"
     }
   ]
 }

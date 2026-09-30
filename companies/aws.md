@@ -1,6 +1,6 @@
 # Amazon Web Services：模型解耦的Guardrail服务
 
-核验日期：2026-09-30。本文关注官方公开能力和研究，不描述未公开内部系统。
+初始核验：2026-09-30；本轮增补：2026-10-01（旧来源日期不批量刷新）。本文关注官方公开能力和研究，不描述未公开内部系统。
 
 ## 公开实践
 
@@ -29,3 +29,11 @@ ApplyGuardrail可独立检查文本；可部署版本与工作草稿分开，并
 
 - [ApplyGuardrail independent API](https://docs.aws.amazon.com/bedrock/latest/userguide/guardrails-use-independent-api.html)：product_documentation。
 - [Deploy your guardrail](https://docs.aws.amazon.com/bedrock/latest/userguide/guardrails-deploy.html)：product_documentation。
+
+## 2026-10-01补充：规则验证并不覆盖所有事实
+
+[Automated Reasoning checks](https://docs.aws.amazon.com/bedrock/latest/userguide/guardrails-automated-reasoning-checks.html)验证政策变量覆盖的文本并返回反馈，不自动阻断。当前文档注明美式英语、非流式及无Prompt注入保护；规则提取和语言到变量的映射也须评测。
+
+短剧授权问答和审核资质判断可借鉴“规则+证据+业务裁决”分层；规则相容不能证明合同/资质真伪。中文业务和未知事实不得直接套用VALID结果，见[案例](../cases/automated-reasoning.md)。
+
+没有调用该服务、验证账户地域或测算生产效果；只把公开设计迁移成待实施验证。

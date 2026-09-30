@@ -1,6 +1,6 @@
 # 腾讯 / 腾讯云：LLM WAF与路由防护
 
-核验日期：2026-09-30。本文关注官方公开能力和研究，不描述未公开内部系统。
+初始核验：2026-09-30；本轮增补：2026-10-01（旧来源日期不批量刷新）。本文关注官方公开能力和研究，不描述未公开内部系统。
 
 ## 公开实践
 
@@ -29,3 +29,11 @@
 
 - [LLM Web Application Firewall](https://cloud.tencent.com/product/llmwaf)：product_documentation。
 - [Model routing safety configuration](https://cloud.tencent.com/document/product/1829/135297)：product_documentation。
+
+## 2026-10-01补充：COS审核采样与冻结范围
+
+[COS视频审核文档](https://cloud.tencent.com/document/product/436/134929)描述截帧、增量检测、回调和禁止公有读的自动冻结。视频审核中台需要记录采样/模态覆盖、对象版本和回调任务，区分检测结果与处置回执。
+
+本项目建议对短剧音轨/字幕冲突、跨帧片段和不同访问路径分别验收。画面通过不证明全片语义安全，禁止公有读也不意味着私有读、CDN或外部副本都失效。
+
+2026-07-23是文档更新日，没有实测腾讯服务、读取全部API/限额或据宣传估计召回；详见[Case](../cases/video-frame-freeze.md)。

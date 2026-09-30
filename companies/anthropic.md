@@ -1,6 +1,6 @@
 # Anthropic：风险治理、分类器与行为评测
 
-核验日期：2026-09-30。本文关注官方公开能力和研究，不描述未公开内部系统。
+初始核验：2026-09-30；本轮增补：2026-10-01（旧来源日期不批量刷新）。本文关注官方公开能力和研究，不描述未公开内部系统。
 
 ## 公开实践
 
@@ -31,3 +31,11 @@ RSP持续版本化；分类器研究同时报告防护效果、正常拒答和�
 - [Constitutional Classifiers](https://www.anthropic.com/news/constitutional-classifiers)：research。
 - [Agentic Misalignment](https://www.anthropic.com/research/agentic-misalignment)：research。
 - [Bloom automated behavioral evaluations](https://alignment.anthropic.com/2025/bloom-auto-evals/)：research。
+
+## 2026-10-01补充：级联检测与平台滥用调查
+
+[Constitutional Classifiers++介绍](https://www.anthropic.com/research/next-generation-constitutional-classifiers)提供轻量筛查、可疑升级及交互联合判断的学习点；内部探针不能作为普通API插件复制。如何将一级误报转成复核而非处罚，见[案例](../cases/classifiers-cascade.md)，研究数字不移作本项目业绩。
+
+[2025网络活动披露](https://www.anthropic.com/news/disrupting-AI-espionage)与[2026-09报告概览](https://www.anthropic.com/threat-intelligence-report-september-2026)扩大到跨任务/工具行为调查。来源是厂商观察，不是独立归因或行业事故率；2026报告只核验HTML概览，未知精确发布日不补造。
+
+迁移到SLG和短剧平台时，关注授权范围、工具副作用、累计预算与跨任务线索；自称防守或内容看似正常仍不能扩权。合法开发对照和独立处置批准同样重要。详见[调查Case](../cases/agentic-cyber-abuse.md)。

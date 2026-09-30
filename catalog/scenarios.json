@@ -132,6 +132,39 @@
       ],
       "controls": "评测自动化、候选策略、独立审批、影子运行",
       "metrics": "调优耗时、误杀增量、错误发布"
+    },
+    {
+      "id": "artifact-revocation",
+      "name": "审核改判与媒资访问撤销",
+      "risk_ids": [
+        "tool-authority",
+        "content-harm",
+        "model-governance"
+      ],
+      "controls": "对象版本、人审覆盖、播放授权撤销、源站/CDN/渠道分别留回执",
+      "metrics": "改判到撤销时长、旧链接可访问量、恢复成功、重复处置"
+    },
+    {
+      "id": "ai-abuse-ops",
+      "name": "AI平台跨任务滥用调查",
+      "risk_ids": [
+        "privacy",
+        "tool-authority",
+        "resource-abuse"
+      ],
+      "controls": "授权目标、跨会话行为关联、凭据最小权限、调查分级及独立处置批准",
+      "metrics": "调查确认率、正常开发误限、危险副作用、风险暴露时间"
+    },
+    {
+      "id": "policy-consistency",
+      "name": "政策问答与资格条件核验",
+      "risk_ids": [
+        "grounding",
+        "tool-authority",
+        "model-governance"
+      ],
+      "controls": "规则提取复核、变量覆盖、证据有效性、歧义澄清、规则与文案分层",
+      "metrics": "规则冲突、证据缺失、正常完成、错误资格承诺"
     }
   ]
 }

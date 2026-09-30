@@ -44,7 +44,7 @@ Linux把上述解释器路径替换为.venv/bin/python。命令只打印结果�
 
 ## 用例与结果
 
-[Golden Set](../evals/control-golden.json)包含5项正常对照和19项风险/边界断言；[结果](../reports/README.md)记录实际运行。原有16个[模型评测设计](../evals/design-cases.json)仍未执行，两套材料不可混算。
+[Golden Set](../evals/control-golden.json)包含5项正常对照和19项风险/边界断言；[结果](../reports/README.md)记录实际运行。22个[模型/业务评测设计](../evals/design-cases.json)（原16项加本轮6项）仍未执行，两套材料不可混算。
 
 66个单元测试另覆盖线程并发、审批人追溯、事件分类、契约与报告一致性。顶层用例risk_ids是设计覆盖，expected.risk_ids才是实际事件标签断言，二者不能混为模型检出结果。详见[修复说明与契约迁移](control-hardening.md)。
 

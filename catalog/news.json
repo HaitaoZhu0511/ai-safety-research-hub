@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-30",
+  "updated_at": "2026-10-01",
   "coverage": "精选动态，非完整新闻流；无定时自动更新",
   "news": [
     {
@@ -88,7 +88,63 @@
       "event_type": "documentation_update",
       "title": "火山AgentKit安全围栏资料",
       "source_id": "volc-agentkit",
-      "analysis": "索引摘录记录的文档更新日；正文读取超时，不是首次发布或效果证明。"
+      "analysis": "索引摘录记录的文档更新日；初次正文超时，本轮复核返回JavaScript提示，仍仅有摘录，不是首次发布或效果证明。"
+    },
+    {
+      "id": "N12",
+      "date": "2026-01-09",
+      "event_type": "research_publication",
+      "title": "Constitutional Classifiers++研究介绍",
+      "source_id": "anthropic-classifiers-next",
+      "analysis": "两级筛查与整段交互判断；厂商研究条件不可外推为中文审核召回或现金节约。"
+    },
+    {
+      "id": "N13",
+      "date": "2025-11-13",
+      "event_type": "report_release",
+      "title": "Anthropic披露Agent编排型网络滥用调查",
+      "source_id": "anthropic-cyber-campaign",
+      "analysis": "活动发现于2025-09，公开于11-13并于11-14勘误；厂商视角，不是独立事故频率统计。"
+    },
+    {
+      "id": "N14",
+      "date": "2026-06-03",
+      "event_type": "documentation_update",
+      "title": "OpenAI Agent Builder/Evals退役公告",
+      "source_id": "openai-deprecations",
+      "analysis": "日期是退役通知日；Evals计划10-31只读、11-30关闭，Agent Builder计划11-30关闭；部署前复核。"
+    },
+    {
+      "id": "N15",
+      "date": "2026-09-17",
+      "event_type": "documentation_update",
+      "title": "阿里云VOD机审与人审联动文档",
+      "source_id": "alibaba-vod-review",
+      "analysis": "人工覆盖机审与播放状态分开；旧播放链接可能继续有效，不把改判等同全渠道撤销。"
+    },
+    {
+      "id": "N16",
+      "date": "2026-07-23",
+      "event_type": "documentation_update",
+      "title": "腾讯COS视频审核与自动冻结文档",
+      "source_id": "tencent-video-review",
+      "analysis": "截帧检测及公有读冻结；不是全模态覆盖或CDN清除效果证明。"
+    },
+    {
+      "id": "N17",
+      "date": "2026-07-29",
+      "event_type": "documentation_update",
+      "title": "AgentKit Runtime安全责任摘录",
+      "source_id": "volc-runtime-security",
+      "analysis": "官方索引的文档更新时间；直接正文需JavaScript，责任划分仍需实施前核验。"
+    },
+    {
+      "id": "N18",
+      "date": "2026-09-18",
+      "event_type": "documentation_update",
+      "title": "Microsoft Prompt Shields与Spotlighting文档",
+      "source_id": "ms-prompt-shields",
+      "analysis": "预览能力、Token开销及检测/过滤差异；文档更新不等于首次产品发布。"
     }
   ]
 }

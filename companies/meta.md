@@ -1,6 +1,6 @@
 # Meta：开放安全模型与评测工具
 
-核验日期：2026-09-30。本文关注官方公开能力和研究，不描述未公开内部系统。
+初始核验：2026-09-30；本轮增补：2026-10-01（旧来源日期不批量刷新）。本文关注官方公开能力和研究，不描述未公开内部系统。
 
 ## 公开实践
 
@@ -28,3 +28,11 @@ Purple Llama包含内容防护、Prompt防护和网络安全评测工具；组�
 ## 来源
 
 - [Purple Llama official repository](https://github.com/meta-llama/PurpleLlama)：official_repository。
+
+## 2026-10-01补充：Agent防护与图像审核边界
+
+[LlamaFirewall官方README](https://raw.githubusercontent.com/meta-llama/PurpleLlama/main/LlamaFirewall/README.md)把Prompt、轨迹、代码与定制扫描分层；可读工具事件用于验证任务偏移，但扫描建议不替代执行授权，不能要求提供隐藏思维链。见[Case](../cases/llama-firewall.md)。
+
+[Llama Guard 4文档](https://dev.meta.ai/llama/docs/model-cards-and-prompt-formats/llama-guard-4)说明文本图像联合输入、英语优化与生成图像的支持限制。中文生成漫剧不在未经验证的默认适用范围；应按具体权重/版本进行图像来源与语言切片评测，而非只看“多模态”。
+
+本轮只读文档与可变main的README，没有下载权重、安装扫描器或复核完整基准；组件、模型和外部服务的许可/费用分别核对。

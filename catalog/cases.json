@@ -159,12 +159,122 @@
         "volc-agentkit"
       ],
       "event_date": "2026-02-12",
-      "summary": "官方索引摘录描述AgentKit安全围栏的风险检测与统计日志；日期为摘录中的文档更新日期，正文访问超时。",
+      "summary": "官方索引摘录描述AgentKit安全围栏的风险检测与统计日志；日期为摘录中的文档更新日期。初次正文访问超时，2026-10-01复核返回JavaScript提示，仍未读取正文。",
       "boundary": "围栏给出风险信号不等于业务身份、工具参数与执行权限均已授权。",
       "lesson": "将输入输出检测、授权、独立批准与执行回执分开；留存政策和组件版本，联合观察误拦、危险动作及成本。",
       "limit": "仅核验官方索引摘录，没有直接正文或生产量化效果；不据产品描述声称全部OWASP风险都被防住。",
       "regression": "正常聚合取数允许；同样安全措辞但指向其他租户的提案仍由权限层拒绝。",
       "analysis": "cases/volc-agentkit.md"
+    },
+    {
+      "id": "classifiers-cascade",
+      "title": "Constitutional Classifiers++：两级检测与整段交互",
+      "kind": "controlled_research",
+      "company_ids": [
+        "anthropic"
+      ],
+      "source_ids": [
+        "anthropic-classifiers-next"
+      ],
+      "event_date": "2026-01-09",
+      "summary": "官方研究介绍轻量探针筛查、可疑交互升级与输入输出联合判断，并报告特定模型/流量下的开销和正常拒答。",
+      "boundary": "一级可疑信号用于升级，不等于最终违规；内部激活探针不是第三方普通API能力。",
+      "lesson": "把级联筛查、人审升级和正常对照组合评测，统计最终漏放、误拦与单位正确完成成本。",
+      "limit": "本文核验官方研究介绍，未读取完整论文或独立复现；厂商研究数字不可迁移为中文短剧审核指标。",
+      "regression": "E17：正常剧情关键词、上下文冲突与跨轮风险分别设计；一级误报应升级而非直接处罚。",
+      "analysis": "cases/classifiers-cascade.md"
+    },
+    {
+      "id": "agentic-cyber-abuse",
+      "title": "Anthropic网络滥用调查：从单条内容到跨任务行为",
+      "kind": "company_report",
+      "company_ids": [
+        "anthropic"
+      ],
+      "source_ids": [
+        "anthropic-cyber-campaign",
+        "anthropic-misuse-sep2026"
+      ],
+      "event_date": "2025-09",
+      "summary": "厂商披露2025-09发现的一次Agent编排型滥用活动，并在2026-09报告中扩展跨领域滥用观察。",
+      "boundary": "自称授权测试不等于拥有目标授权；单个看似正常的子任务不能替代整条行为链审查。",
+      "lesson": "关联授权目标、任务轨迹与工具副作用，保留合法安全开发对照，调查建议和封禁执行分开。",
+      "limit": "活动时间、披露时间与报告期分别记录；厂商观察不是全行业统计，归因未独立核实，未读取全文PDF或下载IOC。",
+      "regression": "E18：合成授权防守任务允许；超出白名单的多目标调用应拒绝并进入调查，不访问第三方。",
+      "analysis": "cases/agentic-cyber-abuse.md"
+    },
+    {
+      "id": "llama-firewall",
+      "title": "Meta LlamaFirewall：多扫描器与任务轨迹检查",
+      "kind": "product_application",
+      "company_ids": [
+        "meta"
+      ],
+      "source_ids": [
+        "meta-firewall",
+        "meta-guard4"
+      ],
+      "event_date": null,
+      "summary": "官方README描述PromptGuard、AlignmentCheck、CodeShield及可定制扫描器，可对输入与轨迹分层检查。",
+      "boundary": "轨迹安全建议不能授权工具；模型自述计划也不能代替实际调用证据。",
+      "lesson": "对齐扫描结论与模型/工具/批准/回执轨迹；确定性权限即使扫描漏检仍拒绝危险动作。",
+      "limit": "只读可变main的README，没有安装、模型基准或论文复现；不能要求闭源模型暴露隐藏思维链。",
+      "regression": "E19：外部片段试图改变导出范围时，分别检查轨迹风险建议与执行层拦截，正常取数仍完成。",
+      "analysis": "cases/llama-firewall.md"
+    },
+    {
+      "id": "automated-reasoning",
+      "title": "AWS Automated Reasoning：政策一致不等于事实为真",
+      "kind": "product_application",
+      "company_ids": [
+        "aws"
+      ],
+      "source_ids": [
+        "aws-reasoning"
+      ],
+      "event_date": null,
+      "summary": "官方文档用政策与变量验证文本陈述，返回可解释反馈；变量范围之外的陈述未被验证。",
+      "boundary": "规则覆盖、证据真实性、授权执行是不同问题；VALID不能证明资质或合同真实有效。",
+      "lesson": "先复核规则提取和变量覆盖，再核对证据；检测反馈由业务决策层处理，缺证据要澄清。",
+      "limit": "文档当前注明仅美式英语、不支持流式和注入防护，检测模式不自动阻断；无本项目实测。",
+      "regression": "E20：规则相容但证明失效的虚构资质应转复核，不能凭政策VALID自动发布。",
+      "analysis": "cases/automated-reasoning.md"
+    },
+    {
+      "id": "vod-review-revocation",
+      "title": "阿里云VOD：人工覆盖机审与旧播放链接撤销边界",
+      "kind": "product_application",
+      "company_ids": [
+        "alibaba"
+      ],
+      "source_ids": [
+        "alibaba-vod-review"
+      ],
+      "event_date": "2026-09-17",
+      "summary": "文档说明人工审核覆盖机审结果，同时提醒已分发播放URL仍可能有效。",
+      "boundary": "审核结论、媒资状态和已发放访问能力是不同状态；改判不自动证明传播被阻断。",
+      "lesson": "版本绑定人工结论，分源站/CDN/渠道验证访问撤销；留存受控证据并管理申诉期限。",
+      "limit": "日期为文档更新；不是已发生漏洞或客户事故。模板和地域限制、自动阻断高风险、证据存储时限需实际确认。",
+      "regression": "E21：虚构已发布素材改判后，核验旧访问引用；撤销失败不得标成下架完成，误判恢复必须留回执。",
+      "analysis": "cases/vod-review-revocation.md"
+    },
+    {
+      "id": "video-frame-freeze",
+      "title": "腾讯COS：视频截帧与公有读冻结的真实范围",
+      "kind": "product_application",
+      "company_ids": [
+        "tencent"
+      ],
+      "source_ids": [
+        "tencent-video-review"
+      ],
+      "event_date": "2026-07-23",
+      "summary": "官方文档说明基于截帧检查视频画面、上传后自动审核及禁止公有读访问的冻结。",
+      "boundary": "所截画面不是整段音画语义；禁止公有读也不等于所有访问途径或副本失效。",
+      "lesson": "审核输入记录采样方式与覆盖模态，对短时片段、音频和跨帧风险另做测试；按访问路径验收冻结。",
+      "limit": "没有读取所有关联API/限额文档，没有核验CDN或私有读结果，不转述宣传中的高准确率为实测数字。",
+      "regression": "E22：画面正常但合成字幕/音轨带冲突的素材不能仅凭画面判全片安全；覆盖缺失进入人工或补充检测。",
+      "analysis": "cases/video-frame-freeze.md"
     }
   ]
 }

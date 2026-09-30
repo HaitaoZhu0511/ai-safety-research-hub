@@ -7,12 +7,16 @@
       "source_ids": [
         "openai-guardrails",
         "openai-safety",
-        "openai-mcp"
+        "openai-mcp",
+        "openai-moderation",
+        "openai-agent-safety",
+        "openai-agent-evals",
+        "openai-deprecations"
       ],
       "focus": "输入/输出/工具Guardrail与人工批准",
       "public_fact": "工具调用边界附近实施校验；需要人工决定时暂停运行；审查后恢复同一次运行。",
       "scenes": "知识库、客服、取数、工具型Agent",
-      "limitations": "仅首个/最终Agent上的Guardrail覆盖范围有限；业务仍需独立实现授权与出站约束。",
+      "limitations": "仅首个/最终Agent上的Guardrail覆盖范围有限；业务仍需独立实现授权与出站约束。 Agent Builder/Evals处于退役过渡期；流式完整输出审核不等于逐片段阻断。",
       "suggested_metrics": "工具越权率、敏感数据外发率、正常任务完成率",
       "document": "companies/openai.md"
     },
@@ -23,7 +27,10 @@
         "anthropic-rsp",
         "anthropic-classifiers",
         "anthropic-misalignment",
-        "anthropic-bloom"
+        "anthropic-bloom",
+        "anthropic-classifiers-next",
+        "anthropic-cyber-campaign",
+        "anthropic-misuse-sep2026"
       ],
       "focus": "风险治理、分类器与行为评测",
       "public_fact": "RSP持续版本化；分类器研究同时报告防护效果、正常拒答和开销；行为研究覆盖Agent失配。",
@@ -39,7 +46,8 @@
         "ms-redteam",
         "ms-content",
         "ms-cve",
-        "ms-pyrit"
+        "ms-pyrit",
+        "ms-prompt-shields"
       ],
       "focus": "企业内容安全与AI红队",
       "public_fact": "公开内容安全分类和Prompt防护能力；提供AI红队方法及PyRIT相关指南。",
@@ -53,7 +61,8 @@
       "name": "Google / DeepMind",
       "source_ids": [
         "google-armor",
-        "google-frontier"
+        "google-frontier",
+        "google-saif-assessment"
       ],
       "focus": "组织基线与模型能力风险",
       "public_fact": "Model Armor以模板管理输入输出检测，提供组织基线与只检测模式；DeepMind公布能力风险框架。",
@@ -66,12 +75,14 @@
       "id": "meta",
       "name": "Meta",
       "source_ids": [
-        "meta-purple"
+        "meta-purple",
+        "meta-firewall",
+        "meta-guard4"
       ],
       "focus": "开放安全模型与评测工具",
       "public_fact": "Purple Llama包含内容防护、Prompt防护和网络安全评测工具；组件许可证并不相同。",
       "scenes": "自部署模型、开放模型应用、代码安全",
-      "limitations": "开放权重不等于无限制许可证；工具支持与版本需逐组件核对。",
+      "limitations": "开放权重不等于无限制许可证；工具支持与版本需逐组件核对。 Llama Guard 4文档对英语、文本图像联合输入及生成图像有明确边界。",
       "suggested_metrics": "类别召回、注入识别、过度拒答、推理成本",
       "document": "companies/meta.md"
     },
@@ -80,12 +91,13 @@
       "name": "Amazon Web Services",
       "source_ids": [
         "aws-guardrail",
-        "aws-version"
+        "aws-version",
+        "aws-reasoning"
       ],
       "focus": "模型解耦的Guardrail服务",
       "public_fact": "ApplyGuardrail可独立检查文本；可部署版本与工作草稿分开，并保存调用版本。",
       "scenes": "多模型应用、RAG、安全网关",
-      "limitations": "内容过滤结果不能代替数据库ACL、IAM授权和工具副作用控制。",
+      "limitations": "内容过滤结果不能代替数据库ACL、IAM授权和工具副作用控制。 Automated Reasoning只覆盖已建模政策变量，反馈需由应用裁决。",
       "suggested_metrics": "版本干预率、P95延迟、单位调用成本、正常通过率",
       "document": "companies/aws.md"
     },
@@ -109,7 +121,8 @@
       "name": "阿里巴巴 / 阿里云",
       "source_ids": [
         "alibaba-ops",
-        "alibaba-workspace"
+        "alibaba-workspace",
+        "alibaba-vod-review"
       ],
       "focus": "安全运营Agent与空间隔离",
       "public_fact": "安全运营Agent公开支持在线测试、效果评测和政策调优；工作空间可隔离权限和用量。",
@@ -123,7 +136,8 @@
       "name": "字节跳动 / 火山引擎",
       "source_ids": [
         "volc-gateway",
-        "volc-agentkit"
+        "volc-agentkit",
+        "volc-runtime-security"
       ],
       "focus": "AI网关、AgentKit安全围栏与可观测",
       "public_fact": "AI网关统一代理模型并提供鉴权、用量、限额和日志能力。AgentKit文档索引描述提示词、资源消耗、模型滥用和敏感数据检查。",
@@ -137,7 +151,8 @@
       "name": "腾讯 / 腾讯云",
       "source_ids": [
         "tencent-waf",
-        "tencent-routing"
+        "tencent-routing",
+        "tencent-video-review"
       ],
       "focus": "LLM WAF与路由防护",
       "public_fact": "公开提示词攻击、涉敏内容、个人信息、算力滥用防护；模型路由文档说明多轮上下文检测。",

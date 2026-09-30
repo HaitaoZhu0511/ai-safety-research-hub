@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "reviewed_at": "2026-09-30",
+  "reviewed_at": "2026-10-01",
   "sources": [
     {
       "id": "openai-guardrails",
@@ -388,9 +388,159 @@
       "title": "AgentKit Guardrails overview",
       "url": "https://docs.volcengine.com/docs/agentkit/Guardrailsoverview?lang=zh",
       "type": "product_documentation",
-      "verified_at": "2026-09-30",
+      "verified_at": "2026-10-01",
       "access_status": "search_excerpt",
-      "note": "官方搜索索引摘录可读，正文直接访问超时；摘录标注文档更新2026-02-12。需实施前重读，不作为独立实测证据。"
+      "note": "官方搜索索引摘录仍可读，正文复查仅返回JavaScript提示；保留search_excerpt，不升级为直接正文。摘录显示2026-02-12更新。"
+    },
+    {
+      "id": "openai-moderation",
+      "publisher": "OpenAI",
+      "title": "Moderation: signals, tool coverage and streaming",
+      "url": "https://developers.openai.com/api/docs/guides/moderation",
+      "type": "product_documentation",
+      "verified_at": "2026-10-01",
+      "access_status": "content_retrieved",
+      "note": "正文可读；分数是策略信号，完整输出审核不等于每个流式片段已审核。"
+    },
+    {
+      "id": "openai-agent-safety",
+      "publisher": "OpenAI",
+      "title": "Safety in building agents",
+      "url": "https://developers.openai.com/api/docs/guides/agent-builder-safety",
+      "type": "product_documentation",
+      "verified_at": "2026-10-01",
+      "access_status": "content_retrieved",
+      "note": "Agent Builder处于退役过渡期；保留安全设计原则，不推荐新项目依赖该界面。"
+    },
+    {
+      "id": "openai-agent-evals",
+      "publisher": "OpenAI",
+      "title": "Evaluate agent workflows",
+      "url": "https://developers.openai.com/api/docs/guides/agent-evals",
+      "type": "product_documentation",
+      "verified_at": "2026-10-01",
+      "access_status": "content_retrieved",
+      "note": "工作流Trace与重复评测方法；页面仍链接旧Evals，产品生命周期以退役公告为准。"
+    },
+    {
+      "id": "openai-deprecations",
+      "publisher": "OpenAI",
+      "title": "Deprecations: Agent Builder and Evals transition",
+      "url": "https://developers.openai.com/api/docs/deprecations",
+      "type": "product_documentation",
+      "verified_at": "2026-10-01",
+      "access_status": "content_retrieved",
+      "note": "2026-06-03公告：Evals于2026-10-31转只读，Evals与Agent Builder计划2026-11-30关闭；实施前重查。"
+    },
+    {
+      "id": "anthropic-classifiers-next",
+      "publisher": "Anthropic",
+      "title": "Next-generation Constitutional Classifiers",
+      "url": "https://www.anthropic.com/research/next-generation-constitutional-classifiers",
+      "type": "research",
+      "verified_at": "2026-10-01",
+      "access_status": "content_retrieved",
+      "note": "2026-01-09研究介绍；内部激活探针不是普通API调用方可直接复刻的能力；研究数字不可作为审核中台ROI。"
+    },
+    {
+      "id": "anthropic-cyber-campaign",
+      "publisher": "Anthropic",
+      "title": "Disrupting an AI-orchestrated cyber espionage campaign",
+      "url": "https://www.anthropic.com/news/disrupting-AI-espionage",
+      "type": "company_report",
+      "verified_at": "2026-10-01",
+      "access_status": "content_retrieved",
+      "note": "2025-11-13公开、11-14勘误；厂商调查视角，活动发现于2025-09，未读取链接PDF或独立验证归因。"
+    },
+    {
+      "id": "anthropic-misuse-sep2026",
+      "publisher": "Anthropic",
+      "title": "Detecting and countering misuse of AI: September 2026",
+      "url": "https://www.anthropic.com/threat-intelligence-report-september-2026",
+      "type": "company_report",
+      "verified_at": "2026-10-01",
+      "access_status": "content_retrieved",
+      "note": "读取HTML概览；报告期2025-12至2026-08。标题仅确认2026-09，不虚构发布日；未阅读全文/PDF或下载IOC。"
+    },
+    {
+      "id": "meta-firewall",
+      "publisher": "Meta",
+      "title": "LlamaFirewall official README",
+      "url": "https://raw.githubusercontent.com/meta-llama/PurpleLlama/main/LlamaFirewall/README.md",
+      "type": "official_repository",
+      "verified_at": "2026-10-01",
+      "access_status": "content_retrieved",
+      "note": "读取官方仓库README正文；main为可变版本，未安装、运行或核验完整论文基准；不收集隐藏思维链。"
+    },
+    {
+      "id": "meta-guard4",
+      "publisher": "Meta",
+      "title": "Llama Guard 4: image support and limitations",
+      "url": "https://dev.meta.ai/llama/docs/model-cards-and-prompt-formats/llama-guard-4",
+      "type": "product_documentation",
+      "verified_at": "2026-10-01",
+      "access_status": "content_retrieved",
+      "note": "正文说明文本图像联合判断、英语优化与生成图像限制；未下载权重或实际测试中文/漫剧。"
+    },
+    {
+      "id": "ms-prompt-shields",
+      "publisher": "Microsoft",
+      "title": "Prompt Shields and Spotlighting",
+      "url": "https://learn.microsoft.com/en-us/azure/ai-services/content-safety/concepts/jailbreak-detection",
+      "type": "product_documentation",
+      "verified_at": "2026-10-01",
+      "access_status": "content_retrieved",
+      "note": "2026-09-18更新；Spotlighting为预览、默认关闭，编码可能增加Token，检测与过滤字段不同。"
+    },
+    {
+      "id": "aws-reasoning",
+      "publisher": "AWS",
+      "title": "Automated Reasoning checks in Bedrock Guardrails",
+      "url": "https://docs.aws.amazon.com/bedrock/latest/userguide/guardrails-automated-reasoning-checks.html",
+      "type": "product_documentation",
+      "verified_at": "2026-10-01",
+      "access_status": "content_retrieved",
+      "note": "只验证政策变量所覆盖的陈述；检测模式返回反馈、不自动阻断；当前仅美式英语、不支持流式及注入防护。"
+    },
+    {
+      "id": "google-saif-assessment",
+      "publisher": "Google",
+      "title": "SAIF Risk Assessment tool introduction",
+      "url": "https://blog.google/innovation-and-ai/technology/safety-security/google-ai-saif-risk-assessment/",
+      "type": "product_announcement",
+      "verified_at": "2026-10-01",
+      "access_status": "content_retrieved",
+      "note": "2024-10-24历史工具介绍，本次重读；问卷生成风险清单不是扫描或认证，未实际提交问卷。"
+    },
+    {
+      "id": "alibaba-vod-review",
+      "publisher": "Alibaba Cloud",
+      "title": "ApsaraVideo VOD: Automated review",
+      "url": "https://www.alibabacloud.com/help/en/vod/user-guide/automated-review-1",
+      "type": "product_documentation",
+      "verified_at": "2026-10-01",
+      "access_status": "content_retrieved",
+      "note": "2026-09-17更新；人工结果覆盖机审，但既有播放链接可能仍有效；审核结果图像存储有时限，模板/地域限制需验证。"
+    },
+    {
+      "id": "tencent-video-review",
+      "publisher": "Tencent Cloud",
+      "title": "COS video moderation and public-read freeze",
+      "url": "https://cloud.tencent.com/document/product/436/134929",
+      "type": "product_documentation",
+      "verified_at": "2026-10-01",
+      "access_status": "content_retrieved",
+      "note": "2026-07-23更新；基于视频截帧，支持禁止公有读的自动冻结；不据此承诺音频覆盖、CDN撤销或真实量化效果。"
+    },
+    {
+      "id": "volc-runtime-security",
+      "publisher": "Volcengine",
+      "title": "AgentKit Runtime security best practices",
+      "url": "https://docs.volcengine.com/docs/agentkit/Runtime_security_best_practices?lang=zh",
+      "type": "product_documentation",
+      "verified_at": "2026-10-01",
+      "access_status": "search_excerpt",
+      "note": "官方搜索索引显示2026-07-29更新，正文直接访问只返回JavaScript提示；仅引用责任划分与上线检查摘录。"
     }
   ]
 }

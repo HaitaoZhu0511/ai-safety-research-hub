@@ -1,6 +1,6 @@
 # OpenAI：输入/输出/工具Guardrail与人工批准
 
-核验日期：2026-09-30。本文关注官方公开能力和研究，不描述未公开内部系统。
+初始核验：2026-09-30；本轮增补：2026-10-01（旧来源日期不批量刷新）。本文关注官方公开能力和研究，不描述未公开内部系统。
 
 ## 公开实践
 
@@ -33,3 +33,11 @@
 ## v0.2：MCP执行边界
 
 官方[MCP文档](https://developers.openai.com/api/docs/guides/tools-connectors-mcp)说明工具范围过滤、敏感操作批准及第三方服务器风险。应用仍需独立校验业务身份、租户、目标和动作参数。离线演示将批准绑定确切提案与政策快照；这是本项目控制实现，不是SDK默认能力，也没有接入真实MCP服务器。
+
+## 2026-10-01补充：内容信号、轨迹与产品生命周期
+
+[Moderation](https://developers.openai.com/api/docs/guides/moderation)区分审核信号和应用决策：错误需单独处理，流式完整输出后的分数不等于每个片段已被阻断，工具描述与Schema也不能依赖该内容审核保护。本项目建议给短剧生成和审核助手明确输出前门禁及失败路径，而不是只记flagged。
+
+[Agent安全文档](https://developers.openai.com/api/docs/guides/agent-builder-safety)与[Trace评测](https://developers.openai.com/api/docs/guides/agent-evals)适合学习不可信数据边界和工作流检查。结构化数据减少自由文本传递面，但不自动实现业务授权；评分器评价可观察过程和结果，不要求隐藏思维链。
+
+OpenAI Docs核验的[退役公告](https://developers.openai.com/api/docs/deprecations)显示Agent Builder/Evals处于过渡期：Evals计划2026-10-31只读，二者计划2026-11-30关闭。新项目学习方法但不绑定待退役界面，迁移与当前可用范围实施前重查。没有调用API或提交样本。
