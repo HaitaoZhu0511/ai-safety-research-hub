@@ -1,15 +1,12 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "title": "AI safety risk event v0.3",
+  "title": "AI safety risk event v0.2",
   "type": "object",
   "required": [
     "event_id",
     "timestamp",
     "scenario",
     "identity_ref",
-    "actor_ref",
-    "actor_role",
-    "approved_by",
     "policy_version",
     "intervention_point",
     "decision",
@@ -37,17 +34,6 @@
     },
     "identity_ref": {
       "type": "string",
-      "minLength": 1
-    },
-    "actor_ref": {
-      "type": "string",
-      "minLength": 1
-    },
-    "actor_role": {
-      "enum": ["requester", "reviewer"]
-    },
-    "approved_by": {
-      "type": ["string", "null"],
       "minLength": 1
     },
     "policy_version": {
@@ -129,7 +115,7 @@
       "type": "string"
     },
     "schema_version": {
-      "const": "0.3"
+      "const": "0.2"
     },
     "reason_code": {
       "type": "string",
@@ -154,28 +140,6 @@
   },
   "additionalProperties": false,
   "allOf": [
-    {
-      "if": {
-        "properties": {"approval_ref": {"type": "string"}},
-        "required": ["approval_ref"]
-      },
-      "then": {
-        "required": ["approved_by"],
-        "properties": {
-          "approval_ref": {"minLength": 1},
-          "approved_by": {"type": "string", "minLength": 1}
-        }
-      }
-    },
-    {
-      "if": {
-        "properties": {"actor_role": {"const": "reviewer"}},
-        "required": ["actor_role"]
-      },
-      "then": {
-        "properties": {"reason_code": {"const": "approval_issued"}}
-      }
-    },
     {
       "if": {
         "properties": {
@@ -240,20 +204,10 @@
       },
       "then": {
         "required": [
-          "approval_ref",
-          "actor_ref",
-          "actor_role",
-          "approved_by"
+          "approval_ref"
         ],
         "properties": {
           "approval_ref": {
-            "type": "string",
-            "minLength": 1
-          },
-          "actor_role": {
-            "const": "reviewer"
-          },
-          "approved_by": {
             "type": "string",
             "minLength": 1
           },

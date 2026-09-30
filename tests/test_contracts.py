@@ -14,6 +14,8 @@ class ContractTests(unittest.TestCase):
         root = Path(__file__).resolve().parents[1]
         schema = json.loads((root / "contracts/risk-event.schema.json").read_text(encoding="utf-8"))
         Draft202012Validator.check_schema(schema)
+        archived = json.loads((root / "contracts/archive/risk-event-0.2.schema.json").read_text(encoding="utf-8"))
+        Draft202012Validator.check_schema(archived)
         cls.validator = Draft202012Validator(schema)
 
     def setUp(self):
@@ -59,6 +61,36 @@ class ContractTests(unittest.TestCase):
     def test_unknown_fields_rejected(self):
         event = self.events[0]
         event["raw_content"] = "must not be logged"
+        with self.assertRaises(ValidationError):
+            self.validator.validate(event)
+
+    def test_approval_requires_reviewer_actor(self):
+        event = self.events[1]
+        event["actor_role"] = "requester"
+        with self.assertRaises(ValidationError):
+            self.validator.validate(event)
+
+    def test_approval_requires_approver_reference(self):
+        event = self.events[1]
+        event["approved_by"] = None
+        with self.assertRaises(ValidationError):
+            self.validator.validate(event)
+
+    def test_actor_is_required(self):
+        event = self.events[2]
+        del event["actor_ref"]
+        with self.assertRaises(ValidationError):
+            self.validator.validate(event)
+
+    def test_approved_execution_requires_approver(self):
+        event = self.events[2]
+        event["approved_by"] = None
+        with self.assertRaises(ValidationError):
+            self.validator.validate(event)
+
+    def test_reviewer_actor_cannot_claim_execution(self):
+        event = self.events[2]
+        event["actor_role"] = "reviewer"
         with self.assertRaises(ValidationError):
             self.validator.validate(event)
 

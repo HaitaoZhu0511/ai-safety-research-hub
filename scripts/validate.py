@@ -74,6 +74,29 @@ def iso_date(value: object, label: str, cutoff: date | None = None) -> None:
         ERRORS.append(f"{label}: invalid ISO date {value!r}")
 
 
+def golden_expectation(value: object, risk_ids: set[str], label: str) -> None:
+    if not isinstance(value, dict):
+        ERRORS.append(f"{label}: expected must be an object")
+        return
+    check(set(value) == {"decision", "reason", "executions", "risk_ids"},
+          f"{label}: expected must include exactly decision/reason/executions/risk_ids")
+    check(value.get("decision") in {"allow", "block", "review", "restrict"},
+          f"{label}: invalid expected decision")
+    check(isinstance(value.get("reason"), str) and bool(value["reason"]), f"{label}: expected reason required")
+    check(type(value.get("executions")) is int and value["executions"] >= 0,
+          f"{label}: invalid expected execution count")
+    labels = value.get("risk_ids")
+    if not isinstance(labels, list):
+        ERRORS.append(f"{label}: expected risk_ids must be an array")
+        return
+    check(all(isinstance(item, str) and item in risk_ids for item in labels),
+          f"{label}: unknown expected risk label")
+    valid = [item for item in labels if isinstance(item, str)]
+    check(len(valid) == len(set(valid)), f"{label}: duplicate expected risk labels")
+    if value.get("decision") in {"block", "review", "restrict"}:
+        check(bool(labels), f"{label}: denied/reviewed control requires a risk label")
+
+
 def main() -> int:
     ERRORS.clear()
     sources_doc = load_json("catalog/sources.json")
@@ -168,6 +191,7 @@ def main() -> int:
         check(row.get("scenario_id") in scenario_ids, f"golden {row.get('id')}: unknown scenario")
         check(row.get("slice") in {"normal", "risky"}, f"golden {row.get('id')}: invalid slice")
         check(bool(row.get("requests")) and bool(row.get("actions")), f"golden {row.get('id')}: empty inputs")
+        golden_expectation(row.get("expected"), risk_ids, f"golden {row.get('id')}")
     stored_report = load_json("reports/offline-control-summary.json")
     report_ids = index(stored_report.get("results", []), "stored control report")
     check(golden_ids == report_ids, "Control report IDs differ from golden suite")
@@ -178,6 +202,9 @@ def main() -> int:
     for relative in ("runtime/safety.py", "runtime/golden.py", "scripts/run_demo.py",
                      "scripts/run_evals.py", "docs/offline-demo.md", "requirements-dev.txt"):
         local_file(relative, "v0.2 required file")
+    for relative in ("docs/control-hardening.md", "docs/production-integration.md",
+                     "contracts/archive/risk-event-0.2.schema.json"):
+        local_file(relative, "v0.3 required file")
 
     # Parse every JSON file. Real event-schema validation is covered by test_contracts.py.
     for path in ROOT.rglob("*.json"):

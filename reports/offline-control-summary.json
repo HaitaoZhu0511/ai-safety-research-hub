@@ -1,6 +1,6 @@
 {
   "verified_on": "2026-09-30",
-  "suite_version": "control-golden-0.2",
+  "suite_version": "control-golden-0.3",
   "execution_type": "offline_deterministic",
   "data_type": "synthetic",
   "model_evaluated": false,
@@ -24,12 +24,14 @@
       "expected": {
         "decision": "allow",
         "reason": "executed",
-        "executions": 1
+        "executions": 1,
+        "risk_ids": []
       },
       "observed": {
         "decision": "allow",
         "reason": "executed",
-        "executions": 1
+        "executions": 1,
+        "risk_ids": []
       }
     },
     {
@@ -39,12 +41,14 @@
       "expected": {
         "decision": "allow",
         "reason": "executed",
-        "executions": 1
+        "executions": 1,
+        "risk_ids": []
       },
       "observed": {
         "decision": "allow",
         "reason": "executed",
-        "executions": 1
+        "executions": 1,
+        "risk_ids": []
       }
     },
     {
@@ -54,12 +58,14 @@
       "expected": {
         "decision": "allow",
         "reason": "executed",
-        "executions": 1
+        "executions": 1,
+        "risk_ids": []
       },
       "observed": {
         "decision": "allow",
         "reason": "executed",
-        "executions": 1
+        "executions": 1,
+        "risk_ids": []
       }
     },
     {
@@ -69,12 +75,18 @@
       "expected": {
         "decision": "block",
         "reason": "tenant_mismatch",
-        "executions": 0
+        "executions": 0,
+        "risk_ids": [
+          "privacy"
+        ]
       },
       "observed": {
         "decision": "block",
         "reason": "tenant_mismatch",
-        "executions": 0
+        "executions": 0,
+        "risk_ids": [
+          "privacy"
+        ]
       }
     },
     {
@@ -84,12 +96,18 @@
       "expected": {
         "decision": "block",
         "reason": "unknown_identity",
-        "executions": 0
+        "executions": 0,
+        "risk_ids": [
+          "tool-authority"
+        ]
       },
       "observed": {
         "decision": "block",
         "reason": "unknown_identity",
-        "executions": 0
+        "executions": 0,
+        "risk_ids": [
+          "tool-authority"
+        ]
       }
     },
     {
@@ -99,12 +117,18 @@
       "expected": {
         "decision": "block",
         "reason": "tool_not_allowed",
-        "executions": 0
+        "executions": 0,
+        "risk_ids": [
+          "tool-authority"
+        ]
       },
       "observed": {
         "decision": "block",
         "reason": "tool_not_allowed",
-        "executions": 0
+        "executions": 0,
+        "risk_ids": [
+          "tool-authority"
+        ]
       }
     },
     {
@@ -114,12 +138,18 @@
       "expected": {
         "decision": "block",
         "reason": "invalid_parameters",
-        "executions": 0
+        "executions": 0,
+        "risk_ids": [
+          "tool-authority"
+        ]
       },
       "observed": {
         "decision": "block",
         "reason": "invalid_parameters",
-        "executions": 0
+        "executions": 0,
+        "risk_ids": [
+          "tool-authority"
+        ]
       }
     },
     {
@@ -129,12 +159,18 @@
       "expected": {
         "decision": "block",
         "reason": "invalid_parameters",
-        "executions": 0
+        "executions": 0,
+        "risk_ids": [
+          "tool-authority"
+        ]
       },
       "observed": {
         "decision": "block",
         "reason": "invalid_parameters",
-        "executions": 0
+        "executions": 0,
+        "risk_ids": [
+          "tool-authority"
+        ]
       }
     },
     {
@@ -144,12 +180,18 @@
       "expected": {
         "decision": "block",
         "reason": "metric_not_allowed",
-        "executions": 0
+        "executions": 0,
+        "risk_ids": [
+          "privacy"
+        ]
       },
       "observed": {
         "decision": "block",
         "reason": "metric_not_allowed",
-        "executions": 0
+        "executions": 0,
+        "risk_ids": [
+          "privacy"
+        ]
       }
     },
     {
@@ -159,12 +201,18 @@
       "expected": {
         "decision": "block",
         "reason": "row_budget",
-        "executions": 0
+        "executions": 0,
+        "risk_ids": [
+          "resource-abuse"
+        ]
       },
       "observed": {
         "decision": "block",
         "reason": "row_budget",
-        "executions": 0
+        "executions": 0,
+        "risk_ids": [
+          "resource-abuse"
+        ]
       }
     },
     {
@@ -174,12 +222,18 @@
       "expected": {
         "decision": "block",
         "reason": "row_budget",
-        "executions": 0
+        "executions": 0,
+        "risk_ids": [
+          "resource-abuse"
+        ]
       },
       "observed": {
         "decision": "block",
         "reason": "row_budget",
-        "executions": 0
+        "executions": 0,
+        "risk_ids": [
+          "resource-abuse"
+        ]
       }
     },
     {
@@ -189,12 +243,18 @@
       "expected": {
         "decision": "block",
         "reason": "row_budget",
-        "executions": 0
+        "executions": 0,
+        "risk_ids": [
+          "resource-abuse"
+        ]
       },
       "observed": {
         "decision": "block",
         "reason": "row_budget",
-        "executions": 0
+        "executions": 0,
+        "risk_ids": [
+          "resource-abuse"
+        ]
       }
     },
     {
@@ -204,12 +264,18 @@
       "expected": {
         "decision": "block",
         "reason": "destination_denied",
-        "executions": 0
+        "executions": 0,
+        "risk_ids": [
+          "privacy"
+        ]
       },
       "observed": {
         "decision": "block",
         "reason": "destination_denied",
-        "executions": 0
+        "executions": 0,
+        "risk_ids": [
+          "privacy"
+        ]
       }
     },
     {
@@ -219,12 +285,18 @@
       "expected": {
         "decision": "block",
         "reason": "role_denied",
-        "executions": 0
+        "executions": 0,
+        "risk_ids": [
+          "tool-authority"
+        ]
       },
       "observed": {
         "decision": "block",
         "reason": "role_denied",
-        "executions": 0
+        "executions": 0,
+        "risk_ids": [
+          "tool-authority"
+        ]
       }
     },
     {
@@ -234,12 +306,18 @@
       "expected": {
         "decision": "review",
         "reason": "approval_required",
-        "executions": 0
+        "executions": 0,
+        "risk_ids": [
+          "tool-authority"
+        ]
       },
       "observed": {
         "decision": "review",
         "reason": "approval_required",
-        "executions": 0
+        "executions": 0,
+        "risk_ids": [
+          "tool-authority"
+        ]
       }
     },
     {
@@ -249,12 +327,14 @@
       "expected": {
         "decision": "allow",
         "reason": "executed",
-        "executions": 1
+        "executions": 1,
+        "risk_ids": []
       },
       "observed": {
         "decision": "allow",
         "reason": "executed",
-        "executions": 1
+        "executions": 1,
+        "risk_ids": []
       }
     },
     {
@@ -264,12 +344,18 @@
       "expected": {
         "decision": "block",
         "reason": "approval_mismatch",
-        "executions": 0
+        "executions": 0,
+        "risk_ids": [
+          "tool-authority"
+        ]
       },
       "observed": {
         "decision": "block",
         "reason": "approval_mismatch",
-        "executions": 0
+        "executions": 0,
+        "risk_ids": [
+          "tool-authority"
+        ]
       }
     },
     {
@@ -279,12 +365,18 @@
       "expected": {
         "decision": "block",
         "reason": "approval_expired",
-        "executions": 0
+        "executions": 0,
+        "risk_ids": [
+          "tool-authority"
+        ]
       },
       "observed": {
         "decision": "block",
         "reason": "approval_expired",
-        "executions": 0
+        "executions": 0,
+        "risk_ids": [
+          "tool-authority"
+        ]
       }
     },
     {
@@ -294,12 +386,18 @@
       "expected": {
         "decision": "block",
         "reason": "approval_mismatch",
-        "executions": 0
+        "executions": 0,
+        "risk_ids": [
+          "tool-authority"
+        ]
       },
       "observed": {
         "decision": "block",
         "reason": "approval_mismatch",
-        "executions": 0
+        "executions": 0,
+        "risk_ids": [
+          "tool-authority"
+        ]
       }
     },
     {
@@ -309,12 +407,18 @@
       "expected": {
         "decision": "block",
         "reason": "kill_switch",
-        "executions": 0
+        "executions": 0,
+        "risk_ids": [
+          "model-governance"
+        ]
       },
       "observed": {
         "decision": "block",
         "reason": "kill_switch",
-        "executions": 0
+        "executions": 0,
+        "risk_ids": [
+          "model-governance"
+        ]
       }
     },
     {
@@ -324,12 +428,14 @@
       "expected": {
         "decision": "allow",
         "reason": "idempotent_replay",
-        "executions": 1
+        "executions": 1,
+        "risk_ids": []
       },
       "observed": {
         "decision": "allow",
         "reason": "idempotent_replay",
-        "executions": 1
+        "executions": 1,
+        "risk_ids": []
       }
     },
     {
@@ -339,12 +445,18 @@
       "expected": {
         "decision": "block",
         "reason": "idempotency_conflict",
-        "executions": 1
+        "executions": 1,
+        "risk_ids": [
+          "tool-authority"
+        ]
       },
       "observed": {
         "decision": "block",
         "reason": "idempotency_conflict",
-        "executions": 1
+        "executions": 1,
+        "risk_ids": [
+          "tool-authority"
+        ]
       }
     },
     {
@@ -354,12 +466,18 @@
       "expected": {
         "decision": "block",
         "reason": "approval_mismatch",
-        "executions": 0
+        "executions": 0,
+        "risk_ids": [
+          "tool-authority"
+        ]
       },
       "observed": {
         "decision": "block",
         "reason": "approval_mismatch",
-        "executions": 0
+        "executions": 0,
+        "risk_ids": [
+          "tool-authority"
+        ]
       }
     },
     {
@@ -369,12 +487,18 @@
       "expected": {
         "decision": "block",
         "reason": "approval_mismatch",
-        "executions": 0
+        "executions": 0,
+        "risk_ids": [
+          "tool-authority"
+        ]
       },
       "observed": {
         "decision": "block",
         "reason": "approval_mismatch",
-        "executions": 0
+        "executions": 0,
+        "risk_ids": [
+          "tool-authority"
+        ]
       }
     }
   ],

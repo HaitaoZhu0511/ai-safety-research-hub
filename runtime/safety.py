@@ -6,6 +6,7 @@ import hashlib
 import json
 import time
 import uuid
+from threading import RLock
 from collections import Counter
 from dataclasses import asdict, dataclass
 from datetime import datetime, timezone
@@ -20,7 +21,7 @@ def digest(value: object) -> str:
 
 @dataclass(frozen=True)
 class Policy:
-    version: str = "demo-0.2"
+    version: str = "demo-0.3"
     allowed_tools: tuple[str, ...] = ("read_metric", "export_records")
     destinations: tuple[str, ...] = ("internal://audit",)
     max_rows: int = 100
@@ -69,11 +70,29 @@ class Approval:
     expires_at: float
 
 
+@dataclass(frozen=True)
+class Receipt:
+    fingerprint: str
+    outcome: Outcome
+    approval_ref: str | None
+
+
+# Control reasons, not a classifier of natural-language or multimodal content.
+RISK_BY_REASON = {
+    "tenant_mismatch": "privacy",
+    "metric_not_allowed": "privacy",
+    "destination_denied": "privacy",
+    "row_budget": "resource-abuse",
+    "kill_switch": "model-governance",
+}
+
+
 class SafetyEngine:
-    """All IDs, metrics and exports are fictitious; state is single-process memory."""
+    """Thread-safe within one instance; fictitious data and non-durable memory only."""
 
     def __init__(self, policy: Policy | None = None, clock: Callable[[], float] = time.time):
-        self.policy = policy or Policy()
+        self._lock = RLock()
+        self.policy = Policy() if policy is None else policy
         self.clock = clock
         self._identities = {
             "analyst_a": Identity("tenant_a", "analyst"),
@@ -87,14 +106,39 @@ class SafetyEngine:
             "tenant_b": {"dau": 800, "retention_d7": 0.28},
         }
         self._approvals: dict[str, Approval] = {}
-        self._receipts: dict[tuple[str, str], tuple[str, Outcome]] = {}
+        self._receipts: dict[tuple[str, str], Receipt] = {}
         self._events: list[dict] = []
         self.execution_count = 0
-        self.disabled = False
+        self._disabled = False
+
+    @property
+    def policy(self) -> Policy:
+        with self._lock:
+            return self._policy
+
+    @policy.setter
+    def policy(self, value: Policy) -> None:
+        if not isinstance(value, Policy):
+            raise TypeError("Policy required")
+        with self._lock:
+            self._policy = value
+
+    @property
+    def disabled(self) -> bool:
+        with self._lock:
+            return self._disabled
+
+    @disabled.setter
+    def disabled(self, value: bool) -> None:
+        if type(value) is not bool:
+            raise TypeError("Boolean kill switch required")
+        with self._lock:
+            self._disabled = value
 
     @property
     def events(self) -> list[dict]:
-        return copy.deepcopy(self._events)
+        with self._lock:
+            return copy.deepcopy(self._events)
 
     def _snapshot(self, request: Request) -> Request:
         # Deep-copy the proposal before validation, approval binding or execution.
@@ -140,19 +184,25 @@ class SafetyEngine:
         return digest({"request": asdict(request), "policy": asdict(self.policy),
                        "identity": asdict(identity) if identity else None})
 
-    def _emit(self, request: Request, outcome: Outcome, approval_ref: str | None = None) -> Outcome:
+    def _emit(self, request: Request, outcome: Outcome, approval_ref: str | None = None,
+              reviewer: str | None = None) -> Outcome:
         try:
             request_digest = self._fingerprint(request)
         except (TypeError, ValueError):
             request_digest = digest({"request": "invalid_non_json_proposal"})
         risk_ids = [] if outcome.decision == "allow" else [
-            "privacy" if outcome.reason == "tenant_mismatch" else "tool-authority"]
+            RISK_BY_REASON.get(outcome.reason, "tool-authority")]
+        principal = request.principal if isinstance(request.principal, str) and request.principal else "invalid"
+        approval = self._approvals.get(approval_ref) if approval_ref else None
         event = {
-            "schema_version": "0.2",
+            "schema_version": "0.3",
             "event_id": f"evt-{len(self._events) + 1:04d}",
             "timestamp": datetime.fromtimestamp(self.clock(), timezone.utc).isoformat(),
             "scenario": "data-agent",
-            "identity_ref": request.principal if isinstance(request.principal, str) and request.principal else "invalid",
+            "identity_ref": principal,
+            "actor_ref": reviewer if reviewer is not None else principal,
+            "actor_role": "reviewer" if reviewer is not None else "requester",
+            "approved_by": approval.reviewer if approval else None,
             "policy_version": self.policy.version,
             "intervention_point": "tool_proposal",
             "decision": outcome.decision,
@@ -170,6 +220,10 @@ class SafetyEngine:
         return copy.deepcopy(outcome)
 
     def approve(self, request: Request, reviewer: str) -> str:
+        with self._lock:
+            return self._approve_locked(request, reviewer)
+
+    def _approve_locked(self, request: Request, reviewer: str) -> str:
         request = self._snapshot(request)
         failure = self._guard(request)
         if failure:
@@ -184,10 +238,16 @@ class SafetyEngine:
         token = "apr-" + uuid.uuid4().hex
         self._approvals[token] = Approval(self._fingerprint(request), reviewer,
                                          self.clock() + self.policy.approval_ttl_seconds)
-        self._emit(request, Outcome("allow", "approval_issued"), token)
+        self._emit(request, Outcome("allow", "approval_issued"), token, reviewer=reviewer)
         return token
 
     def execute(self, request: Request, approval_ref: str | None = None) -> Outcome:
+        # One critical section: authorize, deduplicate, simulate, receipt and audit.
+        # This is NOT a distributed lock or a transaction with a real external tool.
+        with self._lock:
+            return self._execute_locked(request, approval_ref)
+
+    def _execute_locked(self, request: Request, approval_ref: str | None = None) -> Outcome:
         try:
             request = self._snapshot(request)
         except (TypeError, ValueError):
@@ -199,11 +259,11 @@ class SafetyEngine:
         key = (request.principal, request.request_id)
         prior = self._receipts.get(key)
         if prior:
-            if prior[0] != fingerprint:
+            if prior.fingerprint != fingerprint:
                 return self._emit(request, Outcome("block", "idempotency_conflict"))
-            original = prior[1]
+            original = prior.outcome
             return self._emit(request, Outcome("allow", "idempotent_replay",
-                                              original.receipt_ref, original.result, True))
+                                              original.receipt_ref, original.result, True), prior.approval_ref)
         if request.tool == "export_records":
             if approval_ref is None:
                 return self._emit(request, Outcome("review", "approval_required"))
@@ -211,9 +271,19 @@ class SafetyEngine:
             if approval is None:
                 return self._emit(request, Outcome("block", "approval_unknown"))
             if approval.fingerprint != fingerprint:
-                return self._emit(request, Outcome("block", "approval_mismatch"))
+                return self._emit(request, Outcome("block", "approval_mismatch"), approval_ref)
             if self.clock() >= approval.expires_at:
-                return self._emit(request, Outcome("block", "approval_expired"))
+                return self._emit(request, Outcome("block", "approval_expired"), approval_ref)
+        else:
+            # Irrelevant caller-supplied approval references must not imply endorsement.
+            approval_ref = None
+        result = self._run_synthetic(request)
+        outcome = Outcome("allow", "executed", "rcpt-" + uuid.uuid4().hex, result)
+        self._receipts[key] = Receipt(fingerprint, copy.deepcopy(outcome), approval_ref)
+        self.execution_count += 1
+        return self._emit(request, outcome, approval_ref)
+
+    def _run_synthetic(self, request: Request) -> dict:
         # No SQL, sockets, filesystem writes, production APIs or user-supplied code.
         tenant = request.parameters["tenant"]
         if request.tool == "read_metric":
@@ -225,10 +295,7 @@ class SafetyEngine:
                                       for i in range(request.parameters["limit"])],
                       "destination": request.parameters["destination"],
                       "notice": "in-memory simulation; no data transmitted"}
-        self.execution_count += 1
-        outcome = Outcome("allow", "executed", "rcpt-" + uuid.uuid4().hex, result)
-        self._receipts[key] = (fingerprint, copy.deepcopy(outcome))
-        return self._emit(request, outcome, approval_ref)
+        return result
 
 
 def replay(events: list[dict], expected_head: str | None = None,

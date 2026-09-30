@@ -30,7 +30,8 @@ def run_case(case: dict) -> dict:
         raise ValueError("Golden case has no execution")
     audit = replay(engine.events)
     observed = {"decision": outcome.decision, "reason": outcome.reason,
-                "executions": engine.execution_count}
+                "executions": engine.execution_count,
+                "risk_ids": engine.events[-1]["risk_ids"]}
     passed = observed == case["expected"]
     return {"id": case["id"], "slice": case["slice"], "risk_ids": case["risk_ids"],
             "passed": passed, "expected": case["expected"], "observed": observed,

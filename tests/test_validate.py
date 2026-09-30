@@ -47,6 +47,21 @@ class ValidatorTests(unittest.TestCase):
             self.assertEqual(validate.load_json("fixture.json"), {})
         self.assertTrue(validate.ERRORS)
 
+    def test_golden_missing_semantic_risk_assertion_rejected(self):
+        validate.golden_expectation({"decision": "allow", "reason": "executed", "executions": 1},
+                                    {"privacy"}, "fixture")
+        self.assertTrue(validate.ERRORS)
+
+    def test_golden_unknown_semantic_risk_rejected(self):
+        validate.golden_expectation({"decision": "block", "reason": "tenant_mismatch", "executions": 0,
+                                    "risk_ids": ["not-registered"]}, {"privacy"}, "fixture")
+        self.assertTrue(validate.ERRORS)
+
+    def test_golden_allow_with_empty_risk_labels_accepted(self):
+        validate.golden_expectation({"decision": "allow", "reason": "executed", "executions": 1,
+                                    "risk_ids": []}, {"privacy"}, "fixture")
+        self.assertEqual(validate.ERRORS, [])
+
 
 if __name__ == "__main__":
     unittest.main()

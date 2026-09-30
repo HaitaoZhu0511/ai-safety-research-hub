@@ -12,6 +12,8 @@
 
 没有模型参与，G08不代表识别或抵抗了语义注入。grounding、content-harm、provenance等内容与事实能力仍只有[设计用例](../evals/design-cases.json)，不能报告已经通过。
 
+上表是设计覆盖关系，不是所有用例最终事件的分类。0.3新增expected.risk_ids与observed.risk_ids实测断言；例如G23覆盖跨用户批准复用，但因有效提案只是在批准绑定处失配，实际原因approval_mismatch记为tool-authority。不能把覆盖标签直接当风险检测计数。见[分类修复说明](../docs/control-hardening.md)。
+
 正常对照G01—G03、G16、G21确保控制未把全部合法请求一概拦掉。所有结果见[报告](../reports/README.md)。
 
 参考入口：[OWASP LLM2026](https://genai.owasp.org/resource/owasp-genai-llm-top-10-2026/)、[OWASP Agent2026](https://genai.owasp.org/resource/owasp-top-10-for-agentic-applications-for-2026/)、[NIST GenAI Profile](https://www.nist.gov/publications/artificial-intelligence-risk-management-framework-generative-artificial-intelligence)。
