@@ -19,7 +19,11 @@ def check(condition: bool, message: str) -> None:
 
 def load_json(relative: str) -> dict:
     try:
-        return json.loads((ROOT / relative).read_text(encoding="utf-8"))
+        value = json.loads((ROOT / relative).read_text(encoding="utf-8"))
+        if not isinstance(value, dict):
+            ERRORS.append(f"{relative}: top-level JSON must be an object")
+            return {}
+        return value
     except (OSError, ValueError) as exc:
         ERRORS.append(f"{relative}: {exc}")
         return {}
@@ -71,6 +75,7 @@ def iso_date(value: object, label: str, cutoff: date | None = None) -> None:
 
 
 def main() -> int:
+    ERRORS.clear()
     sources_doc = load_json("catalog/sources.json")
     reviewed = sources_doc.get("reviewed_at")
     iso_date(reviewed, "sources reviewed_at")
@@ -107,7 +112,7 @@ def main() -> int:
         check(row.get("url") not in urls, f"{label}: duplicate URL")
         urls.add(row.get("url", ""))
         iso_date(row.get("verified_at"), label, cutoff)
-        check(row.get("access_status") in {"content_retrieved", "javascript_required", "unavailable"},
+        check(row.get("access_status") in {"content_retrieved", "javascript_required", "unavailable", "search_excerpt"},
               f"{label}: invalid access status")
         for key in ("title", "publisher", "type"):
             check(bool(row.get(key)), f"{label}: missing {key}")
@@ -140,7 +145,7 @@ def main() -> int:
         check(row.get("source_id") in source_ids, f"news {row.get('id')}: unknown source")
         iso_date(row.get("date"), f"news {row.get('id')}", cutoff)
         check(row.get("event_type") in {"research_publication", "experiment_publication",
-                                      "paper_submission", "report_release", "documentation_update"},
+                                      "paper_submission", "report_release", "documentation_update", "framework_publication"},
               f"news {row.get('id')}: invalid event type")
     for row in designs:
         check(row.get("risk_id") in risk_ids, f"eval {row.get('id')}: unknown risk")
@@ -156,16 +161,34 @@ def main() -> int:
                      "playbooks/redteam-and-release.md", "contracts/risk-event.schema.json"):
         local_file(relative, "required file")
 
-    # Parse every JSON file, not just the catalogs. Schema contents are not runtime validation.
+    golden = records("evals/control-golden.json", "cases")
+    golden_ids = index(golden, "control golden")
+    for row in golden:
+        references(row.get("risk_ids"), risk_ids, f"golden {row.get('id')}")
+        check(row.get("scenario_id") in scenario_ids, f"golden {row.get('id')}: unknown scenario")
+        check(row.get("slice") in {"normal", "risky"}, f"golden {row.get('id')}: invalid slice")
+        check(bool(row.get("requests")) and bool(row.get("actions")), f"golden {row.get('id')}: empty inputs")
+    stored_report = load_json("reports/offline-control-summary.json")
+    report_ids = index(stored_report.get("results", []), "stored control report")
+    check(golden_ids == report_ids, "Control report IDs differ from golden suite")
+    check(stored_report.get("model_evaluated") is False, "Control report must not claim model evaluation")
+    check(stored_report.get("total") == len(golden), "Control report count mismatch")
+    for row in records("catalog/source-review.json", "reviews"):
+        check(row.get("source_id") in source_ids, "Source review refers to unknown source")
+    for relative in ("runtime/safety.py", "runtime/golden.py", "scripts/run_demo.py",
+                     "scripts/run_evals.py", "docs/offline-demo.md", "requirements-dev.txt"):
+        local_file(relative, "v0.2 required file")
+
+    # Parse every JSON file. Real event-schema validation is covered by test_contracts.py.
     for path in ROOT.rglob("*.json"):
-        if ".git" not in path.parts:
+        if ".git" not in path.parts and ".venv" not in path.parts:
             load_json(path.relative_to(ROOT).as_posix())
 
     # The repository uses inline Markdown links. Remote links and anchors are excluded.
     link_pattern = re.compile(r"!?\[[^\]\n]*\]\(([^)\n]+)\)")
     markdown_count = 0
     for path in ROOT.rglob("*.md"):
-        if ".git" in path.parts:
+        if ".git" in path.parts or ".venv" in path.parts:
             continue
         markdown_count += 1
         content = path.read_text(encoding="utf-8")

@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "title": "AI safety risk event",
+  "title": "AI safety risk event v0.2",
   "type": "object",
   "required": [
     "event_id",
@@ -10,7 +10,14 @@
     "policy_version",
     "intervention_point",
     "decision",
-    "evidence_refs"
+    "evidence_refs",
+    "schema_version",
+    "risk_ids",
+    "reason_code",
+    "request_digest",
+    "sequence",
+    "previous_hash",
+    "event_hash"
   ],
   "properties": {
     "event_id": {
@@ -50,8 +57,23 @@
     "risk_ids": {
       "type": "array",
       "items": {
-        "type": "string"
-      }
+        "type": "string",
+        "enum": [
+          "content-harm",
+          "prompt-injection",
+          "privacy",
+          "tool-authority",
+          "provenance",
+          "grounding",
+          "eval-integrity",
+          "resource-abuse",
+          "fairness",
+          "supply-chain",
+          "capability-risk",
+          "model-governance"
+        ]
+      },
+      "uniqueItems": true
     },
     "decision": {
       "enum": [
@@ -64,8 +86,10 @@
     "evidence_refs": {
       "type": "array",
       "items": {
-        "type": "string"
-      }
+        "type": "string",
+        "minLength": 1
+      },
+      "minItems": 1
     },
     "approval_ref": {
       "type": [
@@ -89,7 +113,109 @@
     },
     "currency": {
       "type": "string"
+    },
+    "schema_version": {
+      "const": "0.2"
+    },
+    "reason_code": {
+      "type": "string",
+      "minLength": 1
+    },
+    "request_digest": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "sequence": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "previous_hash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "event_hash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
     }
   },
-  "additionalProperties": false
+  "additionalProperties": false,
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "decision": {
+            "enum": [
+              "block",
+              "review"
+            ]
+          }
+        },
+        "required": [
+          "decision"
+        ]
+      },
+      "then": {
+        "properties": {
+          "risk_ids": {
+            "minItems": 1
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "reason_code": {
+            "enum": [
+              "executed",
+              "idempotent_replay"
+            ]
+          }
+        },
+        "required": [
+          "reason_code"
+        ]
+      },
+      "then": {
+        "required": [
+          "execution_receipt_ref"
+        ],
+        "properties": {
+          "decision": {
+            "const": "allow"
+          },
+          "execution_receipt_ref": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "reason_code": {
+            "const": "approval_issued"
+          }
+        },
+        "required": [
+          "reason_code"
+        ]
+      },
+      "then": {
+        "required": [
+          "approval_ref"
+        ],
+        "properties": {
+          "approval_ref": {
+            "type": "string",
+            "minLength": 1
+          },
+          "decision": {
+            "const": "allow"
+          }
+        }
+      }
+    }
+  ]
 }

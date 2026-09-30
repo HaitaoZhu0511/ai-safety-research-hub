@@ -1,0 +1,62 @@
+{
+  "reviewed_at": "2026-09-30",
+  "notice": "台账不是网页快照；不提供未生成的内容哈希",
+  "reviews": [
+    {
+      "source_id": "openai-mcp",
+      "evidence_scope": "resource_page_or_readme",
+      "version_hint": null,
+      "full_document_verified": false,
+      "snapshot_ref": null,
+      "next_check": "实施前锁定版本并执行授权环境测试"
+    },
+    {
+      "source_id": "owasp-llm-2026",
+      "evidence_scope": "resource_page_or_readme",
+      "version_hint": "2026",
+      "full_document_verified": false,
+      "snapshot_ref": null,
+      "next_check": "读取框架全文后做版本条目映射"
+    },
+    {
+      "source_id": "owasp-agentic-2026",
+      "evidence_scope": "resource_page_or_readme",
+      "version_hint": "2026",
+      "full_document_verified": false,
+      "snapshot_ref": null,
+      "next_check": "读取框架全文后做版本条目映射"
+    },
+    {
+      "source_id": "ms-pyrit",
+      "evidence_scope": "resource_page_or_readme",
+      "version_hint": null,
+      "full_document_verified": false,
+      "snapshot_ref": null,
+      "next_check": "实施前锁定版本并执行授权环境测试"
+    },
+    {
+      "source_id": "nvidia-garak",
+      "evidence_scope": "resource_page_or_readme",
+      "version_hint": null,
+      "full_document_verified": false,
+      "snapshot_ref": null,
+      "next_check": "实施前锁定版本并执行授权环境测试"
+    },
+    {
+      "source_id": "agentdojo",
+      "evidence_scope": "resource_page_or_readme",
+      "version_hint": null,
+      "full_document_verified": false,
+      "snapshot_ref": null,
+      "next_check": "实施前锁定版本并执行授权环境测试"
+    },
+    {
+      "source_id": "volc-agentkit",
+      "evidence_scope": "official_search_excerpt",
+      "version_hint": null,
+      "full_document_verified": false,
+      "snapshot_ref": null,
+      "next_check": "重新取得官方正文并核验部署限制"
+    }
+  ]
+}

@@ -1,6 +1,7 @@
 """Negative checks for the metadata validator, not model safety evaluations."""
 import importlib.util
 import unittest
+from unittest.mock import patch
 from datetime import date
 from pathlib import Path
 
@@ -40,6 +41,11 @@ class ValidatorTests(unittest.TestCase):
         validate.iso_date("2026-09-30", "fixture", date(2026, 9, 30))
         validate.local_file("README.md", "fixture")
         self.assertEqual(validate.ERRORS, [])
+
+    def test_non_object_json_rejected(self):
+        with patch("pathlib.Path.read_text", return_value="[]"):
+            self.assertEqual(validate.load_json("fixture.json"), {})
+        self.assertTrue(validate.ERRORS)
 
 
 if __name__ == "__main__":

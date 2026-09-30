@@ -1,4 +1,4 @@
-# 字节跳动 / 火山引擎：模型入口、认证、配额与可观测
+# 字节跳动 / 火山引擎：AI网关、AgentKit安全围栏与可观测
 
 核验日期：2026-09-30。本文关注官方公开能力和研究，不描述未公开内部系统。
 
@@ -28,3 +28,9 @@ AI网关统一代理模型并提供鉴权、用量、限额和日志能力。
 ## 来源
 
 - [AI Gateway overview](https://docs.volcengine.com/docs/apig/What_is_the_AI_Gateway?lang=zh)：product_documentation。
+
+## v0.2：从入口管控补充到Agent安全围栏
+
+[AgentKit安全围栏](https://docs.volcengine.com/docs/agentkit/Guardrailsoverview?lang=zh)官方索引摘录描述提示词攻击、算力消耗、模型滥用、敏感数据四类防护，以及请求趋势和命中日志。该材料仅取得索引摘录，直接访问超时；文档更新时间不是产品首次发布。
+
+工程上应区分检测信号、业务裁决、工具授权和执行回执：即使输入输出检测通过，仍需检查数据ACL及退款、导出、发布等动作的权限。尚无本项目独立实测或生产收益结论。详见[产品应用分析](../cases/volc-agentkit.md)。

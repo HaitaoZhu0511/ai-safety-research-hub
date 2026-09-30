@@ -16,3 +16,11 @@
 ## 维护规则
 
 新增动态至少记录发布方、原始URL、发布或更新日期、事件类型、核验日期及业务启示。文档更新时间不等于产品发布日；报告发布年份不等于效果发生年份。当前没有启用自动抓取或定时通知。
+
+## v0.2新增
+
+- [OWASP LLM指南2026版](https://genai.owasp.org/resource/owasp-genai-llm-top-10-2026/)：资源页2026-08-03；完整条目仍待阅读全文。
+- [OWASP Agent风险框架2026版](https://genai.owasp.org/resource/owasp-top-10-for-agentic-applications-for-2026/)：资源页2025-12-09，版本为2026。
+- [AgentKit围栏](https://docs.volcengine.com/docs/agentkit/Guardrailsoverview?lang=zh)：索引摘录显示2026-02-12更新，正文访问超时。
+
+仍是人工维护的精选目录，没有启动定时新闻采集或自动发布。

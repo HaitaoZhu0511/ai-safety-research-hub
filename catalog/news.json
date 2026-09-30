@@ -65,6 +65,30 @@
       "title": "阿里云安全运营Agent文档",
       "source_id": "alibaba-ops",
       "analysis": "公开预览的在线测试、评测和调优能力。"
+    },
+    {
+      "id": "N09",
+      "date": "2026-08-03",
+      "event_type": "framework_publication",
+      "title": "OWASP LLM风险指南2026版资源页",
+      "source_id": "owasp-llm-2026",
+      "analysis": "资源页日期；保留旧版入口，后续阅读全文后再做条目级差异。"
+    },
+    {
+      "id": "N10",
+      "date": "2025-12-09",
+      "event_type": "framework_publication",
+      "title": "OWASP Agent风险框架2026版资源页",
+      "source_id": "owasp-agentic-2026",
+      "analysis": "版本年份2026，资源页发布日期2025，不混为同一日期。"
+    },
+    {
+      "id": "N11",
+      "date": "2026-02-12",
+      "event_type": "documentation_update",
+      "title": "火山AgentKit安全围栏资料",
+      "source_id": "volc-agentkit",
+      "analysis": "索引摘录记录的文档更新日；正文读取超时，不是首次发布或效果证明。"
     }
   ]
 }

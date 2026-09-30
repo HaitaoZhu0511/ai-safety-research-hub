@@ -321,6 +321,76 @@
       "verified_at": "2026-09-30",
       "access_status": "content_retrieved",
       "note": ""
+    },
+    {
+      "id": "openai-mcp",
+      "publisher": "OpenAI",
+      "title": "MCP servers: risks and approvals",
+      "url": "https://developers.openai.com/api/docs/guides/tools-connectors-mcp",
+      "type": "product_documentation",
+      "verified_at": "2026-09-30",
+      "access_status": "content_retrieved",
+      "note": "Responses API文档；工具过滤与敏感操作批准不能替代服务端授权。"
+    },
+    {
+      "id": "owasp-llm-2026",
+      "publisher": "OWASP",
+      "title": "OWASP GenAI LLM Top 10 2026",
+      "url": "https://genai.owasp.org/resource/owasp-genai-llm-top-10-2026/",
+      "type": "community_framework",
+      "verified_at": "2026-09-30",
+      "access_status": "content_retrieved",
+      "note": "已核验资源页简介与2026版存在，未读取下载版全文；不宣称完成所有条目迁移。"
+    },
+    {
+      "id": "owasp-agentic-2026",
+      "publisher": "OWASP",
+      "title": "OWASP Top 10 for Agentic Applications 2026",
+      "url": "https://genai.owasp.org/resource/owasp-top-10-for-agentic-applications-for-2026/",
+      "type": "community_framework",
+      "verified_at": "2026-09-30",
+      "access_status": "content_retrieved",
+      "note": "资源页标注2025-12-09，版本年份为2026；已核验简介，非完整框架认证。"
+    },
+    {
+      "id": "ms-pyrit",
+      "publisher": "Microsoft",
+      "title": "PyRIT official repository",
+      "url": "https://github.com/microsoft/PyRIT",
+      "type": "official_repository",
+      "verified_at": "2026-09-30",
+      "access_status": "content_retrieved",
+      "note": "只研究官方README；未安装或运行PyRIT，未承诺生产效果。"
+    },
+    {
+      "id": "nvidia-garak",
+      "publisher": "NVIDIA",
+      "title": "garak official repository",
+      "url": "https://github.com/NVIDIA/garak",
+      "type": "official_repository",
+      "verified_at": "2026-09-30",
+      "access_status": "content_retrieved",
+      "note": "模型探测与报告工具；本仓库未运行扫描器，版本与探测预算需另行固定。"
+    },
+    {
+      "id": "agentdojo",
+      "publisher": "ETH Zurich / Invariant Labs",
+      "title": "AgentDojo official repository",
+      "url": "https://github.com/ethz-spylab/agentdojo",
+      "type": "official_repository",
+      "verified_at": "2026-09-30",
+      "access_status": "content_retrieved",
+      "note": "Agent提示注入与防护评测环境；未执行其模型基准，API仍可能变化。"
+    },
+    {
+      "id": "volc-agentkit",
+      "publisher": "Volcengine",
+      "title": "AgentKit Guardrails overview",
+      "url": "https://docs.volcengine.com/docs/agentkit/Guardrailsoverview?lang=zh",
+      "type": "product_documentation",
+      "verified_at": "2026-09-30",
+      "access_status": "search_excerpt",
+      "note": "官方搜索索引摘录可读，正文直接访问超时；摘录标注文档更新2026-02-12。需实施前重读，不作为独立实测证据。"
     }
   ]
 }

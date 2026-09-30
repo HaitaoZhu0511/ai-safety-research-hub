@@ -6,7 +6,8 @@
       "name": "OpenAI",
       "source_ids": [
         "openai-guardrails",
-        "openai-safety"
+        "openai-safety",
+        "openai-mcp"
       ],
       "focus": "输入/输出/工具Guardrail与人工批准",
       "public_fact": "工具调用边界附近实施校验；需要人工决定时暂停运行；审查后恢复同一次运行。",
@@ -37,7 +38,8 @@
       "source_ids": [
         "ms-redteam",
         "ms-content",
-        "ms-cve"
+        "ms-cve",
+        "ms-pyrit"
       ],
       "focus": "企业内容安全与AI红队",
       "public_fact": "公开内容安全分类和Prompt防护能力；提供AI红队方法及PyRIT相关指南。",
@@ -92,7 +94,8 @@
       "name": "NVIDIA",
       "source_ids": [
         "nvidia-rails",
-        "nvidia-eval"
+        "nvidia-eval",
+        "nvidia-garak"
       ],
       "focus": "五段式Rails与联合评测",
       "public_fact": "在输入、检索、对话、执行、输出阶段实施检查；评测同时统计遵从、资源和延迟。",
@@ -119,12 +122,13 @@
       "id": "bytedance",
       "name": "字节跳动 / 火山引擎",
       "source_ids": [
-        "volc-gateway"
+        "volc-gateway",
+        "volc-agentkit"
       ],
-      "focus": "模型入口、认证、配额与可观测",
-      "public_fact": "AI网关统一代理模型并提供鉴权、用量、限额和日志能力。",
+      "focus": "AI网关、AgentKit安全围栏与可观测",
+      "public_fact": "AI网关统一代理模型并提供鉴权、用量、限额和日志能力。AgentKit文档索引描述提示词、资源消耗、模型滥用和敏感数据检查。",
       "scenes": "多部门模型接入、客服、营销模型服务",
-      "limitations": "网关文档不证明字节内部对齐训练；页面标明邀测，不承诺普遍可用。",
+      "limitations": "网关文档不证明字节内部对齐训练；页面标明邀测，不承诺普遍可用。AgentKit部分仅取得官方索引摘录；检测能力不等于工具执行授权。",
       "suggested_metrics": "异常Token、配额越界、接入耗时、日志完整率",
       "document": "companies/bytedance.md"
     },

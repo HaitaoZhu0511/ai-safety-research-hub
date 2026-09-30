@@ -48,6 +48,18 @@
 | mitre-atlas | MITRE | [ATLAS](https://atlas.mitre.org/) | community_framework |
 | cac-label | 国家网信办 | [人工智能生成合成内容标识办法](https://www.cac.gov.cn/2025-03/14/c_1743654684782215.htm) | regulation |
 
+## v0.2新增来源
+
+| ID | 发布方 | 材料 | 类型 |
+| --- | --- | --- | --- |
+| openai-mcp | OpenAI | [MCP servers: risks and approvals](https://developers.openai.com/api/docs/guides/tools-connectors-mcp) | product_documentation |
+| owasp-llm-2026 | OWASP | [OWASP GenAI LLM Top 10 2026](https://genai.owasp.org/resource/owasp-genai-llm-top-10-2026/) | community_framework |
+| owasp-agentic-2026 | OWASP | [OWASP Top 10 for Agentic Applications 2026](https://genai.owasp.org/resource/owasp-top-10-for-agentic-applications-for-2026/) | community_framework |
+| ms-pyrit | Microsoft | [PyRIT official repository](https://github.com/microsoft/PyRIT) | official_repository |
+| nvidia-garak | NVIDIA | [garak official repository](https://github.com/NVIDIA/garak) | official_repository |
+| agentdojo | ETH Zurich / Invariant Labs | [AgentDojo official repository](https://github.com/ethz-spylab/agentdojo) | official_repository |
+| volc-agentkit | Volcengine | [AgentKit Guardrails overview](https://docs.volcengine.com/docs/agentkit/Guardrailsoverview?lang=zh) | product_documentation |
+
 ## 读取限制
 
 Microsoft CVE页面需要JavaScript，本项目没有直接取得其公告正文，相关Case以Microsoft来源的NVD条目与独立案例论文辅助核验。Google Frontier Safety Framework来源为2024年初始材料，不能据其内容宣称当前最新版的具体要求。
@@ -55,3 +67,5 @@ Microsoft CVE页面需要JavaScript，本项目没有直接取得其公告正文
 MITRE ATLAS交互首页未返回可读正文，本项目仅提供框架入口，不声称完成其全部技术目录核验。各来源的读取状态和限制记录在JSON索引中。
 
 外链会变化；`verified_at`是本次读取日期，不是首次发布时间。结构校验不保证所有外链长期可用。涉及版本敏感能力，实施时重新阅读对应文档。
+
+新增AgentKit材料仅取得官方索引摘录，直接页面访问超时。2026版OWASP材料已核验资源页，尚未阅读全文；详见[版本维护](../docs/source-maintenance.md)。

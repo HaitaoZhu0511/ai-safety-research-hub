@@ -147,6 +147,24 @@
       "limit": "这是公开产品能力示例，不是某客户安全事故或量化ROI案例；单轮检测与支持格式存在限制。",
       "regression": "业务模板尝试关闭组织强制敏感数据检查，应由配置校验拒绝；检测服务不可用时按风险分类降级。",
       "analysis": "cases/model-armor-shadow.md"
+    },
+    {
+      "id": "volc-agentkit",
+      "title": "火山AgentKit：安全围栏信号与工具授权分层",
+      "kind": "product_application",
+      "company_ids": [
+        "bytedance"
+      ],
+      "source_ids": [
+        "volc-agentkit"
+      ],
+      "event_date": "2026-02-12",
+      "summary": "官方索引摘录描述AgentKit安全围栏的风险检测与统计日志；日期为摘录中的文档更新日期，正文访问超时。",
+      "boundary": "围栏给出风险信号不等于业务身份、工具参数与执行权限均已授权。",
+      "lesson": "将输入输出检测、授权、独立批准与执行回执分开；留存政策和组件版本，联合观察误拦、危险动作及成本。",
+      "limit": "仅核验官方索引摘录，没有直接正文或生产量化效果；不据产品描述声称全部OWASP风险都被防住。",
+      "regression": "正常聚合取数允许；同样安全措辞但指向其他租户的提案仍由权限层拒绝。",
+      "analysis": "cases/volc-agentkit.md"
     }
   ]
 }

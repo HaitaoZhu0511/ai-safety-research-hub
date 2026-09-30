@@ -29,3 +29,7 @@
 
 - [Guardrails and human review](https://developers.openai.com/api/docs/guides/agents/guardrails-approvals)：product_documentation。
 - [Safety best practices](https://developers.openai.com/api/docs/guides/safety-best-practices)：product_documentation。
+
+## v0.2：MCP执行边界
+
+官方[MCP文档](https://developers.openai.com/api/docs/guides/tools-connectors-mcp)说明工具范围过滤、敏感操作批准及第三方服务器风险。应用仍需独立校验业务身份、租户、目标和动作参数。离线演示将批准绑定确切提案与政策快照；这是本项目控制实现，不是SDK默认能力，也没有接入真实MCP服务器。
