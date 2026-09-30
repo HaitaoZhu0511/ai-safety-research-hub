@@ -1,0 +1,137 @@
+{
+  "scenarios": [
+    {
+      "id": "data-agent",
+      "name": "SLG/AI短剧数据库Agent",
+      "risk_ids": [
+        "privacy",
+        "prompt-injection",
+        "grounding",
+        "tool-authority"
+      ],
+      "controls": "指标口径、库表ACL、只读SQL、行数限制、导出授权",
+      "metrics": "正确取数率、跨租户查询、错误口径、导出事件"
+    },
+    {
+      "id": "moderation",
+      "name": "AI审核工作台",
+      "risk_ids": [
+        "content-harm",
+        "fairness",
+        "model-governance"
+      ],
+      "controls": "模型建议、证据定位、专家队列、申诉独立复核",
+      "metrics": "漏放曝光、误杀、复核时长、翻案"
+    },
+    {
+      "id": "ecommerce",
+      "name": "电商商品发布",
+      "risk_ids": [
+        "content-harm",
+        "grounding",
+        "tool-authority"
+      ],
+      "controls": "资质联动、宣传证据、修改建议、上架门禁",
+      "metrics": "一次通过、事后下架、投诉、单位成本"
+    },
+    {
+      "id": "advertising",
+      "name": "广告素材与投放",
+      "risk_ids": [
+        "content-harm",
+        "privacy",
+        "tool-authority"
+      ],
+      "controls": "广告主资质、素材落地页快照、预算及投放批准",
+      "metrics": "误驳、违规消耗、上线周期、预算越权"
+    },
+    {
+      "id": "aigc-drama",
+      "name": "AI短剧/漫剧生成",
+      "risk_ids": [
+        "provenance",
+        "content-harm",
+        "supply-chain"
+      ],
+      "controls": "素材权利、剧本/画面/音频联合检测、来源标识",
+      "metrics": "标识覆盖、侵权投诉、漏放、复审成本"
+    },
+    {
+      "id": "live-avatar",
+      "name": "数字人直播",
+      "risk_ids": [
+        "content-harm",
+        "grounding",
+        "tool-authority"
+      ],
+      "controls": "实时切片、身份声明、商品证据、断播批准路径",
+      "metrics": "严重风险存续、误断播、检测延迟"
+    },
+    {
+      "id": "enterprise-rag",
+      "name": "企业知识库RAG",
+      "risk_ids": [
+        "prompt-injection",
+        "privacy",
+        "grounding"
+      ],
+      "controls": "文档ACL、来源隔离、外发控制、引用",
+      "metrics": "注入后危险动作、泄漏、引用正确率"
+    },
+    {
+      "id": "customer-service",
+      "name": "AI客服退款",
+      "risk_ids": [
+        "tool-authority",
+        "privacy",
+        "grounding"
+      ],
+      "controls": "订单归属、退款范围、金额限制、确认与账本",
+      "metrics": "违规退款、正常完成、转人工"
+    },
+    {
+      "id": "coding-agent",
+      "name": "代码与运维Agent",
+      "risk_ids": [
+        "supply-chain",
+        "tool-authority",
+        "resource-abuse"
+      ],
+      "controls": "沙箱、网络范围、变更审查、部署批准",
+      "metrics": "危险命令、缺陷、人工审查、成本"
+    },
+    {
+      "id": "marketing-ops",
+      "name": "营销自动化Agent",
+      "risk_ids": [
+        "tool-authority",
+        "resource-abuse",
+        "privacy"
+      ],
+      "controls": "预算、发送名单、用户授权、频率限制",
+      "metrics": "超预算、误发送、转化、撤回"
+    },
+    {
+      "id": "model-release",
+      "name": "模型上线与厂商切换",
+      "risk_ids": [
+        "capability-risk",
+        "eval-integrity",
+        "model-governance"
+      ],
+      "controls": "基线、留出集、红队、灰度、回滚",
+      "metrics": "能力变化、过度拒答、评测覆盖"
+    },
+    {
+      "id": "ai-risk-ops",
+      "name": "安全运营Agent",
+      "risk_ids": [
+        "eval-integrity",
+        "tool-authority",
+        "model-governance"
+      ],
+      "controls": "评测自动化、候选策略、独立审批、影子运行",
+      "metrics": "调优耗时、误杀增量、错误发布"
+    }
+  ]
+}

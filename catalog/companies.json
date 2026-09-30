@@ -1,0 +1,172 @@
+{
+  "schema_version": "1.0",
+  "companies": [
+    {
+      "id": "openai",
+      "name": "OpenAI",
+      "source_ids": [
+        "openai-guardrails",
+        "openai-safety"
+      ],
+      "focus": "输入/输出/工具Guardrail与人工批准",
+      "public_fact": "工具调用边界附近实施校验；需要人工决定时暂停运行；审查后恢复同一次运行。",
+      "scenes": "知识库、客服、取数、工具型Agent",
+      "limitations": "仅首个/最终Agent上的Guardrail覆盖范围有限；业务仍需独立实现授权与出站约束。",
+      "suggested_metrics": "工具越权率、敏感数据外发率、正常任务完成率",
+      "document": "companies/openai.md"
+    },
+    {
+      "id": "anthropic",
+      "name": "Anthropic",
+      "source_ids": [
+        "anthropic-rsp",
+        "anthropic-classifiers",
+        "anthropic-misalignment",
+        "anthropic-bloom"
+      ],
+      "focus": "风险治理、分类器与行为评测",
+      "public_fact": "RSP持续版本化；分类器研究同时报告防护效果、正常拒答和开销；行为研究覆盖Agent失配。",
+      "scenes": "前沿模型发布、安全评测、长任务Agent",
+      "limitations": "受控模拟结果不能外推为生产事故率；风险框架首页不能替代具体版本全文。",
+      "suggested_metrics": "攻击成功率、正常拒答率、行为失配频率、成本",
+      "document": "companies/anthropic.md"
+    },
+    {
+      "id": "microsoft",
+      "name": "Microsoft",
+      "source_ids": [
+        "ms-redteam",
+        "ms-content",
+        "ms-cve"
+      ],
+      "focus": "企业内容安全与AI红队",
+      "public_fact": "公开内容安全分类和Prompt防护能力；提供AI红队方法及PyRIT相关指南。",
+      "scenes": "企业Copilot、办公RAG、审核工作台",
+      "limitations": "检测器无法独立解决权限、敏感数据访问和浏览器外发问题。",
+      "suggested_metrics": "误杀、漏放、外发拦截、跨租户访问、红队修复率",
+      "document": "companies/microsoft.md"
+    },
+    {
+      "id": "google",
+      "name": "Google / DeepMind",
+      "source_ids": [
+        "google-armor",
+        "google-frontier"
+      ],
+      "focus": "组织基线与模型能力风险",
+      "public_fact": "Model Armor以模板管理输入输出检测，提供组织基线与只检测模式；DeepMind公布能力风险框架。",
+      "scenes": "企业AI网关、RAG、多业务统一保护",
+      "limitations": "模型能力框架与云产品属于不同层；单轮检测不等于完整多轮任务安全。",
+      "suggested_metrics": "基线覆盖率、影子命中、人群误杀、敏感数据泄漏",
+      "document": "companies/google.md"
+    },
+    {
+      "id": "meta",
+      "name": "Meta",
+      "source_ids": [
+        "meta-purple"
+      ],
+      "focus": "开放安全模型与评测工具",
+      "public_fact": "Purple Llama包含内容防护、Prompt防护和网络安全评测工具；组件许可证并不相同。",
+      "scenes": "自部署模型、开放模型应用、代码安全",
+      "limitations": "开放权重不等于无限制许可证；工具支持与版本需逐组件核对。",
+      "suggested_metrics": "类别召回、注入识别、过度拒答、推理成本",
+      "document": "companies/meta.md"
+    },
+    {
+      "id": "aws",
+      "name": "Amazon Web Services",
+      "source_ids": [
+        "aws-guardrail",
+        "aws-version"
+      ],
+      "focus": "模型解耦的Guardrail服务",
+      "public_fact": "ApplyGuardrail可独立检查文本；可部署版本与工作草稿分开，并保存调用版本。",
+      "scenes": "多模型应用、RAG、安全网关",
+      "limitations": "内容过滤结果不能代替数据库ACL、IAM授权和工具副作用控制。",
+      "suggested_metrics": "版本干预率、P95延迟、单位调用成本、正常通过率",
+      "document": "companies/aws.md"
+    },
+    {
+      "id": "nvidia",
+      "name": "NVIDIA",
+      "source_ids": [
+        "nvidia-rails",
+        "nvidia-eval"
+      ],
+      "focus": "五段式Rails与联合评测",
+      "public_fact": "在输入、检索、对话、执行、输出阶段实施检查；评测同时统计遵从、资源和延迟。",
+      "scenes": "RAG、工具Agent、领域对话系统",
+      "limitations": "Rails是编排能力，不自动保证检查逻辑正确；完整配置仍需评测。",
+      "suggested_metrics": "政策遵从率、工具异常、额外模型调用、延迟",
+      "document": "companies/nvidia.md"
+    },
+    {
+      "id": "alibaba",
+      "name": "阿里巴巴 / 阿里云",
+      "source_ids": [
+        "alibaba-ops",
+        "alibaba-workspace"
+      ],
+      "focus": "安全运营Agent与空间隔离",
+      "public_fact": "安全运营Agent公开支持在线测试、效果评测和政策调优；工作空间可隔离权限和用量。",
+      "scenes": "审核策略运营、多团队模型平台",
+      "limitations": "产品文档公开预览状态；政策调优当前范围有限；一键应用仍应结合自身发布门禁。",
+      "suggested_metrics": "评测耗时、配置回滚、误杀、权限覆盖、工作空间成本",
+      "document": "companies/alibaba.md"
+    },
+    {
+      "id": "bytedance",
+      "name": "字节跳动 / 火山引擎",
+      "source_ids": [
+        "volc-gateway"
+      ],
+      "focus": "模型入口、认证、配额与可观测",
+      "public_fact": "AI网关统一代理模型并提供鉴权、用量、限额和日志能力。",
+      "scenes": "多部门模型接入、客服、营销模型服务",
+      "limitations": "网关文档不证明字节内部对齐训练；页面标明邀测，不承诺普遍可用。",
+      "suggested_metrics": "异常Token、配额越界、接入耗时、日志完整率",
+      "document": "companies/bytedance.md"
+    },
+    {
+      "id": "tencent",
+      "name": "腾讯 / 腾讯云",
+      "source_ids": [
+        "tencent-waf",
+        "tencent-routing"
+      ],
+      "focus": "LLM WAF与路由防护",
+      "public_fact": "公开提示词攻击、涉敏内容、个人信息、算力滥用防护；模型路由文档说明多轮上下文检测。",
+      "scenes": "智能客服、模型服务、Agent平台",
+      "limitations": "产品说明未披露生产成功率；不能据营销描述承诺绝对防护。",
+      "suggested_metrics": "攻击命中、敏感外发、异常消耗、正常误拦",
+      "document": "companies/tencent.md"
+    },
+    {
+      "id": "baidu",
+      "name": "百度 / 百度智能云",
+      "source_ids": [
+        "baidu-guard"
+      ],
+      "focus": "大模型与Agent安全护栏",
+      "public_fact": "公开覆盖内容风险、越狱、隐私泄漏和智能体异常，并支持多模态安全方向。",
+      "scenes": "生成内容、智能问答、企业Agent",
+      "limitations": "产品描述不提供可直接横比的评测结果；实际支持需按部署场景验证。",
+      "suggested_metrics": "风险检出、误拒答、多模态覆盖、Agent异常",
+      "document": "companies/baidu.md"
+    },
+    {
+      "id": "kuaishou",
+      "name": "快手 / 可灵AI",
+      "source_ids": [
+        "kuaishou-esg"
+      ],
+      "focus": "内容生态、AIGC标识与商业治理",
+      "public_fact": "公开披露AIGC标识及大模型安全制度；AI辅助商品发布降低下架，连接安全与业务效果。",
+      "scenes": "短视频、直播、电商、广告、生成视频",
+      "limitations": "企业披露效果不是独立因果实验；制度名称不等于公开内部实现。",
+      "suggested_metrics": "标识覆盖、风险曝光、翻案、商品一次通过、审核成本",
+      "document": "companies/kuaishou.md"
+    }
+  ]
+}

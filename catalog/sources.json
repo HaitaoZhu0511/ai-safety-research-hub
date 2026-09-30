@@ -1,0 +1,326 @@
+{
+  "schema_version": "1.0",
+  "reviewed_at": "2026-09-30",
+  "sources": [
+    {
+      "id": "openai-guardrails",
+      "publisher": "OpenAI",
+      "title": "Guardrails and human review",
+      "url": "https://developers.openai.com/api/docs/guides/agents/guardrails-approvals",
+      "type": "product_documentation",
+      "verified_at": "2026-09-30",
+      "access_status": "content_retrieved",
+      "note": ""
+    },
+    {
+      "id": "openai-safety",
+      "publisher": "OpenAI",
+      "title": "Safety best practices",
+      "url": "https://developers.openai.com/api/docs/guides/safety-best-practices",
+      "type": "product_documentation",
+      "verified_at": "2026-09-30",
+      "access_status": "content_retrieved",
+      "note": ""
+    },
+    {
+      "id": "anthropic-rsp",
+      "publisher": "Anthropic",
+      "title": "Responsible Scaling Policy",
+      "url": "https://www.anthropic.com/responsible-scaling-policy",
+      "type": "governance_framework",
+      "verified_at": "2026-09-30",
+      "access_status": "content_retrieved",
+      "note": ""
+    },
+    {
+      "id": "anthropic-classifiers",
+      "publisher": "Anthropic",
+      "title": "Constitutional Classifiers",
+      "url": "https://www.anthropic.com/news/constitutional-classifiers",
+      "type": "research",
+      "verified_at": "2026-09-30",
+      "access_status": "content_retrieved",
+      "note": ""
+    },
+    {
+      "id": "anthropic-misalignment",
+      "publisher": "Anthropic",
+      "title": "Agentic Misalignment",
+      "url": "https://www.anthropic.com/research/agentic-misalignment",
+      "type": "research",
+      "verified_at": "2026-09-30",
+      "access_status": "content_retrieved",
+      "note": ""
+    },
+    {
+      "id": "anthropic-summer2026",
+      "publisher": "Anthropic",
+      "title": "Agentic Misalignment in Summer 2026",
+      "url": "https://alignment.anthropic.com/2026/agentic-misalignment-summer-2026/",
+      "type": "research",
+      "verified_at": "2026-09-30",
+      "access_status": "content_retrieved",
+      "note": ""
+    },
+    {
+      "id": "anthropic-vend1",
+      "publisher": "Anthropic",
+      "title": "Project Vend phase one",
+      "url": "https://www.anthropic.com/research/project-vend-1",
+      "type": "real_world_experiment",
+      "verified_at": "2026-09-30",
+      "access_status": "content_retrieved",
+      "note": ""
+    },
+    {
+      "id": "anthropic-vend2",
+      "publisher": "Anthropic",
+      "title": "Project Vend phase two",
+      "url": "https://www.anthropic.com/research/project-vend-2",
+      "type": "real_world_experiment",
+      "verified_at": "2026-09-30",
+      "access_status": "content_retrieved",
+      "note": ""
+    },
+    {
+      "id": "anthropic-bloom",
+      "publisher": "Anthropic",
+      "title": "Bloom automated behavioral evaluations",
+      "url": "https://alignment.anthropic.com/2025/bloom-auto-evals/",
+      "type": "research",
+      "verified_at": "2026-09-30",
+      "access_status": "content_retrieved",
+      "note": ""
+    },
+    {
+      "id": "ms-redteam",
+      "publisher": "Microsoft",
+      "title": "Microsoft AI Red Team",
+      "url": "https://learn.microsoft.com/en-us/security/ai-red-team/",
+      "type": "product_documentation",
+      "verified_at": "2026-09-30",
+      "access_status": "content_retrieved",
+      "note": ""
+    },
+    {
+      "id": "ms-content",
+      "publisher": "Microsoft",
+      "title": "Azure AI Content Safety",
+      "url": "https://learn.microsoft.com/en-us/azure/cognitive-services/content-safety/overview",
+      "type": "product_documentation",
+      "verified_at": "2026-09-30",
+      "access_status": "content_retrieved",
+      "note": ""
+    },
+    {
+      "id": "ms-cve",
+      "publisher": "Microsoft",
+      "title": "CVE-2025-32711 vendor advisory",
+      "url": "https://msrc.microsoft.com/update-guide/vulnerability/CVE-2025-32711",
+      "type": "vendor_advisory",
+      "verified_at": "2026-09-30",
+      "access_status": "javascript_required",
+      "note": "页面需JavaScript，未直接读取公告正文；以Microsoft来源的NVD记录与论文辅助核验。"
+    },
+    {
+      "id": "nvd-echoleak",
+      "publisher": "NIST NVD",
+      "title": "CVE-2025-32711 record",
+      "url": "https://nvd.nist.gov/vuln/detail/cve-2025-32711",
+      "type": "vulnerability_record",
+      "verified_at": "2026-09-30",
+      "access_status": "content_retrieved",
+      "note": ""
+    },
+    {
+      "id": "echoleak-paper",
+      "publisher": "Reddy and Gujral",
+      "title": "EchoLeak independent case-study paper",
+      "url": "https://arxiv.org/abs/2509.10540",
+      "type": "independent_research",
+      "verified_at": "2026-09-30",
+      "access_status": "content_retrieved",
+      "note": "独立案例分析论文，不是漏洞发现者的一手披露；漏洞事实与厂商公告/NVD交叉引用。"
+    },
+    {
+      "id": "google-armor",
+      "publisher": "Google Cloud",
+      "title": "Model Armor overview",
+      "url": "https://docs.cloud.google.com/model-armor/overview",
+      "type": "product_documentation",
+      "verified_at": "2026-09-30",
+      "access_status": "content_retrieved",
+      "note": ""
+    },
+    {
+      "id": "google-frontier",
+      "publisher": "Google DeepMind",
+      "title": "Introducing Frontier Safety Framework (historical baseline)",
+      "url": "https://deepmind.google/blog/introducing-the-frontier-safety-framework/",
+      "type": "governance_framework",
+      "verified_at": "2026-09-30",
+      "access_status": "content_retrieved",
+      "note": "2024年初始框架；不将其描述为当前版本全文。"
+    },
+    {
+      "id": "meta-purple",
+      "publisher": "Meta",
+      "title": "Purple Llama official repository",
+      "url": "https://github.com/meta-llama/PurpleLlama",
+      "type": "official_repository",
+      "verified_at": "2026-09-30",
+      "access_status": "content_retrieved",
+      "note": ""
+    },
+    {
+      "id": "aws-guardrail",
+      "publisher": "AWS",
+      "title": "ApplyGuardrail independent API",
+      "url": "https://docs.aws.amazon.com/bedrock/latest/userguide/guardrails-use-independent-api.html",
+      "type": "product_documentation",
+      "verified_at": "2026-09-30",
+      "access_status": "content_retrieved",
+      "note": ""
+    },
+    {
+      "id": "aws-version",
+      "publisher": "AWS",
+      "title": "Deploy your guardrail",
+      "url": "https://docs.aws.amazon.com/bedrock/latest/userguide/guardrails-deploy.html",
+      "type": "product_documentation",
+      "verified_at": "2026-09-30",
+      "access_status": "content_retrieved",
+      "note": ""
+    },
+    {
+      "id": "nvidia-rails",
+      "publisher": "NVIDIA",
+      "title": "Guardrail Types",
+      "url": "https://docs.nvidia.com/nemo/guardrails/about-nemo-guardrails-library/rail-types",
+      "type": "product_documentation",
+      "verified_at": "2026-09-30",
+      "access_status": "content_retrieved",
+      "note": ""
+    },
+    {
+      "id": "nvidia-eval",
+      "publisher": "NVIDIA",
+      "title": "Evaluate Configuration",
+      "url": "https://docs.nvidia.com/nemo/guardrails/evaluation/evaluate-configuration",
+      "type": "product_documentation",
+      "verified_at": "2026-09-30",
+      "access_status": "content_retrieved",
+      "note": ""
+    },
+    {
+      "id": "alibaba-ops",
+      "publisher": "Alibaba Cloud",
+      "title": "Security Operations Agent",
+      "url": "https://www.alibabacloud.com/help/en/content-moderation/latest/how-to-use-the-security-operation-agent",
+      "type": "product_documentation",
+      "verified_at": "2026-09-30",
+      "access_status": "content_retrieved",
+      "note": ""
+    },
+    {
+      "id": "alibaba-workspace",
+      "publisher": "Alibaba Cloud",
+      "title": "Model Studio workspaces",
+      "url": "https://www.alibabacloud.com/help/en/model-studio/use-workspace",
+      "type": "product_documentation",
+      "verified_at": "2026-09-30",
+      "access_status": "content_retrieved",
+      "note": ""
+    },
+    {
+      "id": "volc-gateway",
+      "publisher": "Volcengine",
+      "title": "AI Gateway overview",
+      "url": "https://docs.volcengine.com/docs/apig/What_is_the_AI_Gateway?lang=zh",
+      "type": "product_documentation",
+      "verified_at": "2026-09-30",
+      "access_status": "content_retrieved",
+      "note": ""
+    },
+    {
+      "id": "tencent-waf",
+      "publisher": "Tencent Cloud",
+      "title": "LLM Web Application Firewall",
+      "url": "https://cloud.tencent.com/product/llmwaf",
+      "type": "product_documentation",
+      "verified_at": "2026-09-30",
+      "access_status": "content_retrieved",
+      "note": ""
+    },
+    {
+      "id": "tencent-routing",
+      "publisher": "Tencent Cloud",
+      "title": "Model routing safety configuration",
+      "url": "https://cloud.tencent.com/document/product/1829/135297",
+      "type": "product_documentation",
+      "verified_at": "2026-09-30",
+      "access_status": "content_retrieved",
+      "note": ""
+    },
+    {
+      "id": "baidu-guard",
+      "publisher": "Baidu Cloud",
+      "title": "AI Safety Guardrail",
+      "url": "https://cloud.baidu.com/product/AIGCSEC/platform.html",
+      "type": "product_documentation",
+      "verified_at": "2026-09-30",
+      "access_status": "content_retrieved",
+      "note": ""
+    },
+    {
+      "id": "kuaishou-esg",
+      "publisher": "Kuaishou",
+      "title": "2025 ESG release",
+      "url": "https://ir.kuaishou.com/news-releases/news-release-details/kuaishou-releases-2025-esg-report-deepening-green-operations-and",
+      "type": "company_report",
+      "verified_at": "2026-09-30",
+      "access_status": "content_retrieved",
+      "note": ""
+    },
+    {
+      "id": "nist-genai",
+      "publisher": "NIST",
+      "title": "AI RMF Generative AI Profile",
+      "url": "https://www.nist.gov/publications/artificial-intelligence-risk-management-framework-generative-artificial-intelligence",
+      "type": "standard_framework",
+      "verified_at": "2026-09-30",
+      "access_status": "content_retrieved",
+      "note": ""
+    },
+    {
+      "id": "owasp-llm",
+      "publisher": "OWASP",
+      "title": "Top 10 for LLM Applications",
+      "url": "https://genai.owasp.org/llm-top-10/",
+      "type": "community_framework",
+      "verified_at": "2026-09-30",
+      "access_status": "content_retrieved",
+      "note": ""
+    },
+    {
+      "id": "mitre-atlas",
+      "publisher": "MITRE",
+      "title": "ATLAS",
+      "url": "https://atlas.mitre.org/",
+      "type": "community_framework",
+      "verified_at": "2026-09-30",
+      "access_status": "javascript_required",
+      "note": "交互首页未返回可读正文；仅收录框架入口，不声称核验其完整技术目录。"
+    },
+    {
+      "id": "cac-label",
+      "publisher": "国家网信办",
+      "title": "人工智能生成合成内容标识办法",
+      "url": "https://www.cac.gov.cn/2025-03/14/c_1743654684782215.htm",
+      "type": "regulation",
+      "verified_at": "2026-09-30",
+      "access_status": "content_retrieved",
+      "note": ""
+    }
+  ]
+}

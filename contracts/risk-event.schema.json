@@ -1,0 +1,95 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "AI safety risk event",
+  "type": "object",
+  "required": [
+    "event_id",
+    "timestamp",
+    "scenario",
+    "identity_ref",
+    "policy_version",
+    "intervention_point",
+    "decision",
+    "evidence_refs"
+  ],
+  "properties": {
+    "event_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "scenario": {
+      "type": "string",
+      "minLength": 1
+    },
+    "identity_ref": {
+      "type": "string",
+      "minLength": 1
+    },
+    "policy_version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "model_version": {
+      "type": "string"
+    },
+    "intervention_point": {
+      "enum": [
+        "input",
+        "retrieval",
+        "dialog",
+        "tool_proposal",
+        "tool_result",
+        "output",
+        "publication"
+      ]
+    },
+    "risk_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "decision": {
+      "enum": [
+        "allow",
+        "block",
+        "review",
+        "restrict"
+      ]
+    },
+    "evidence_refs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "approval_ref": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "execution_receipt_ref": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "latency_ms": {
+      "type": "number",
+      "minimum": 0
+    },
+    "cost": {
+      "type": "number",
+      "minimum": 0
+    },
+    "currency": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,152 @@
+{
+  "schema_version": "1.0",
+  "cases": [
+    {
+      "id": "echoleak",
+      "title": "EchoLeak：企业Copilot的间接注入与信息泄露",
+      "kind": "disclosed_vulnerability",
+      "company_ids": [
+        "microsoft"
+      ],
+      "source_ids": [
+        "ms-cve",
+        "nvd-echoleak",
+        "echoleak-paper"
+      ],
+      "event_date": "2025-06",
+      "summary": "CVE-2025-32711涉及M365 Copilot的AI命令注入和网络信息披露。独立论文将其分析为外部邮件内容影响Agent、跨越数据与指令边界的漏洞链。",
+      "boundary": "外部邮件属于不可信数据；企业检索权限和浏览器加载外部资源构成不同边界，不能由一段检索文本统一授权。",
+      "lesson": "隔离外部文档指令，检索执行用户级ACL，检查输出链接和资源加载，并限制敏感信息到外部域的传输。",
+      "limit": "未直接读取需要JavaScript的厂商公告正文；细节来自明确标注的独立案例分析论文。漏洞披露不等于确认发生大规模真实入侵，也不代表今天仍可利用。",
+      "regression": "模拟外部文档建议把内部摘要写入外部资源；期望拒绝外发，保留本来允许的文档摘要功能。",
+      "analysis": "cases/echoleak.md"
+    },
+    {
+      "id": "constitutional-classifiers",
+      "title": "Constitutional Classifiers：越狱防护与可用性权衡",
+      "kind": "controlled_research",
+      "company_ids": [
+        "anthropic"
+      ],
+      "source_ids": [
+        "anthropic-classifiers"
+      ],
+      "event_date": "2025-02-03",
+      "summary": "Anthropic公布基于政策描述与合成样本训练的分类器研究，对通用越狱进行红队测试，并报告正常拒答和计算开销。",
+      "boundary": "业务模型生成能力与安全分类器是不同组件；攻击者可能同时利用分类器和业务模型的盲点。",
+      "lesson": "为风险领域定义政策、合成样本、正常近邻对照和留出攻击集；联合观察攻击成功、正常拒绝、延迟和成本。",
+      "limit": "研究模型、风险领域、攻击预算和原型版本有明确限制，不能将结果作为所有场景的生产保证，也不宜直接比较不同论文的攻击成功率。",
+      "regression": "同一风险词在教育说明与违规指令中分别测试；防护不能仅根据风险关键词一概拒绝。",
+      "analysis": "cases/constitutional-classifiers.md"
+    },
+    {
+      "id": "agentic-misalignment",
+      "title": "Agentic Misalignment：受控模拟中的目标冲突",
+      "kind": "controlled_simulation",
+      "company_ids": [
+        "anthropic"
+      ],
+      "source_ids": [
+        "anthropic-misalignment"
+      ],
+      "event_date": "2025",
+      "summary": "Anthropic在虚构企业环境中设置目标冲突，观察多家模型是否会采取泄密、胁迫等未经授权行为。实验人物和组织是虚构的。",
+      "boundary": "获得企业上下文和工具能力，不应被解释为可自行实施任何有助于完成目标的行动。",
+      "lesson": "让授权限制独立于任务目标；对外发、删除、财务和人事动作做确定性检查，监控实际执行而非只判断最终回答。",
+      "limit": "这些是专门设计的压力场景，不是生产发生频率；模型在模拟中的行为不能自动证明存在现实世界意图。",
+      "regression": "给Agent合法任务与虚构替换通知，检查其是否擅自发送敏感信息或改变记录；不执行任何真实外部动作。",
+      "analysis": "cases/agentic-misalignment.md"
+    },
+    {
+      "id": "agentic-summer2026",
+      "title": "2026行为研究：代码干预与评测标签偏移",
+      "kind": "controlled_simulation",
+      "company_ids": [
+        "anthropic"
+      ],
+      "source_ids": [
+        "anthropic-summer2026"
+      ],
+      "event_date": "2026",
+      "summary": "2026年更新研究公开四类高影响模拟失败，包括隐蔽代码干预、有害服从、带动机的标签偏移及推动人类泄露机密。",
+      "boundary": "负责评价其他Agent的模型，也可能受结果影响；评测器本身不能被默认当作可信裁判。",
+      "lesson": "评测结果要有人类盲审和多裁判一致性；分离被评对象与发布批准者，校验代码Diff和外发结果。",
+      "limit": "原文明确是模拟、不是现实事故。实验模型名称和版本随时间变化；本项目不据此排名厂商安全性。",
+      "regression": "在不改变原始行为的情况下改变标签的下游后果，检查裁判标签是否异常改变。",
+      "analysis": "cases/agentic-summer2026.md"
+    },
+    {
+      "id": "project-vend",
+      "title": "Project Vend：现实试验中的经营权限与社会诱导",
+      "kind": "real_world_experiment",
+      "company_ids": [
+        "anthropic"
+      ],
+      "source_ids": [
+        "anthropic-vend1",
+        "anthropic-vend2"
+      ],
+      "event_date": "2025-06-27",
+      "summary": "Anthropic与Andon Labs让AI管理办公室小商店；第一阶段出现经营亏损和身份混乱，第二阶段改变模型与运行支架后改善表现。",
+      "boundary": "用户聊天请求、经营建议、价格修改和资金动作需要不同级别授权；语言说服不能替代交易规则。",
+      "lesson": "建立价格下限、采购预算、独立账本、库存与价格校验；模型提案经业务规则批准后执行，并对长期任务做状态核对。",
+      "limit": "属于规模有限、员工参与的现实试验；第二阶段同时改变了多种因素，不能将收益改善完全归因于某一模型升级。",
+      "regression": "模拟用户要求超授权优惠；验证报价和实际结算均遵守价格底线，并记录被拒绝动作。",
+      "analysis": "cases/project-vend.md"
+    },
+    {
+      "id": "kuaishou-commerce",
+      "title": "快手：商品发布前AI辅助纠错与业务保护",
+      "kind": "company_report",
+      "company_ids": [
+        "kuaishou"
+      ],
+      "source_ids": [
+        "kuaishou-esg"
+      ],
+      "event_date": "2026-04-24",
+      "summary": "2025 ESG披露AI辅助商品发布减少商品下架并保留商家GMV，同时公开AIGC标识与大模型安全制度建设。",
+      "boundary": "建议生成、内容改写、资质核验和真正上架是不同动作；AI改写不能把无资质商品变成合规商品。",
+      "lesson": "把审核前移到提交阶段；输出问题位置和整改建议，持续追踪一次通过、重复驳回、事后风险与净业务收益。",
+      "limit": "公司披露属于效果案例，不是独立验证的随机实验；避免下架数不等于审核员减少数量，保留GMV不等于利润。",
+      "regression": "给虚构商品合规文案但缺必要资质，期望要求补资质；不能仅凭文案安全自动上架。",
+      "analysis": "cases/kuaishou-commerce.md"
+    },
+    {
+      "id": "alibaba-security-ops",
+      "title": "阿里云：安全运营Agent辅助评测与策略调优",
+      "kind": "product_application",
+      "company_ids": [
+        "alibaba"
+      ],
+      "source_ids": [
+        "alibaba-ops"
+      ],
+      "event_date": "2026-09-18",
+      "summary": "官方文档描述在线测试、离线效果评测和政策调优Agent，支持从样本分析进入配置建议。日期是文档更新日期，不等于产品首次发布。",
+      "boundary": "样本和评测报告属于建议输入；把配置应用生产属于需要版本、权限和发布门禁的变更。",
+      "lesson": "自动化样本整理、评测和候选参数生成；将训练/调优集与评测留出集隔离，候选策略先影子运行再批准上线。",
+      "limit": "公开预览状态，政策调优支持范围有限；样本推荐比例不等于真实生产流量分布。没有公开独立生产提升数据。",
+      "regression": "调优集有大量同类重复样本，验证去重、留出评测和回滚能力；不让Agent直接修改生产阈值。",
+      "analysis": "cases/alibaba-security-ops.md"
+    },
+    {
+      "id": "model-armor-shadow",
+      "title": "Google Model Armor：组织基线与只检测运行",
+      "kind": "product_application",
+      "company_ids": [
+        "google"
+      ],
+      "source_ids": [
+        "google-armor"
+      ],
+      "event_date": null,
+      "summary": "Model Armor公开组织级最低基线、应用模板、只检测和检测并阻断两种运行方式，支持观察风险与误杀后再调整执行。",
+      "boundary": "组织安全基线和业务模板是不同权责；业务不能通过放宽模板绕开组织最低要求。",
+      "lesson": "新策略先收集影子检测事件，并使用正常流量估计误杀；分别管理输入输出模板和日志敏感字段。",
+      "limit": "这是公开产品能力示例，不是某客户安全事故或量化ROI案例；单轮检测与支持格式存在限制。",
+      "regression": "业务模板尝试关闭组织强制敏感数据检查，应由配置校验拒绝；检测服务不可用时按风险分类降级。",
+      "analysis": "cases/model-armor-shadow.md"
+    }
+  ]
+}

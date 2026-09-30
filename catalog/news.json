@@ -1,0 +1,70 @@
+{
+  "updated_at": "2026-09-30",
+  "coverage": "精选动态，非完整新闻流；无定时自动更新",
+  "news": [
+    {
+      "id": "N01",
+      "date": "2025-02-03",
+      "event_type": "research_publication",
+      "title": "Constitutional Classifiers研究",
+      "source_id": "anthropic-classifiers",
+      "analysis": "同时研究防护、正常拒答和算力开销。"
+    },
+    {
+      "id": "N02",
+      "date": "2025-06-27",
+      "event_type": "experiment_publication",
+      "title": "Project Vend第一阶段",
+      "source_id": "anthropic-vend1",
+      "analysis": "现实经营Agent暴露长期状态、价格和授权问题。"
+    },
+    {
+      "id": "N03",
+      "date": "2025-09-06",
+      "event_type": "paper_submission",
+      "title": "EchoLeak案例论文",
+      "source_id": "echoleak-paper",
+      "analysis": "这是论文提交日期；漏洞披露在此前，不能混为一谈。"
+    },
+    {
+      "id": "N04",
+      "date": "2025-12-18",
+      "event_type": "experiment_publication",
+      "title": "Project Vend第二阶段",
+      "source_id": "anthropic-vend2",
+      "analysis": "多因素变更后经营改善；不能单因果归因。"
+    },
+    {
+      "id": "N05",
+      "date": "2025-12-19",
+      "event_type": "research_publication",
+      "title": "Bloom自动行为评测",
+      "source_id": "anthropic-bloom",
+      "analysis": "针对指定行为生成场景并衡量频率/严重度。"
+    },
+    {
+      "id": "N06",
+      "date": "2026-04-24",
+      "event_type": "report_release",
+      "title": "快手2025 ESG披露",
+      "source_id": "kuaishou-esg",
+      "analysis": "发布在2026年，主要报告期为2025年。"
+    },
+    {
+      "id": "N07",
+      "date": "2026-09-15",
+      "event_type": "documentation_update",
+      "title": "腾讯模型路由安全配置",
+      "source_id": "tencent-routing",
+      "analysis": "文档更新，不等于产品首次上线。"
+    },
+    {
+      "id": "N08",
+      "date": "2026-09-18",
+      "event_type": "documentation_update",
+      "title": "阿里云安全运营Agent文档",
+      "source_id": "alibaba-ops",
+      "analysis": "公开预览的在线测试、评测和调优能力。"
+    }
+  ]
+}

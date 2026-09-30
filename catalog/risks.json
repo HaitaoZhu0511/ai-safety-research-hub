@@ -1,0 +1,76 @@
+{
+  "risks": [
+    {
+      "id": "content-harm",
+      "name": "有害内容与场景误判",
+      "stage": "输入/输出",
+      "control": "识别风险类别、语境、年龄与地域，避免把正常教育内容误判"
+    },
+    {
+      "id": "prompt-injection",
+      "name": "直接或间接Prompt注入",
+      "stage": "输入/检索/工具结果",
+      "control": "外部文本不进入高优先级指令；动作参数在执行边界验证"
+    },
+    {
+      "id": "privacy",
+      "name": "敏感数据与跨租户泄漏",
+      "stage": "检索/输出/外发",
+      "control": "用户级ACL、租户隔离、脱敏、出站目的地控制"
+    },
+    {
+      "id": "tool-authority",
+      "name": "工具越权与过度自主",
+      "stage": "工具提案/执行",
+      "control": "最小权限、参数Schema、独立审批、预算与影响上限"
+    },
+    {
+      "id": "provenance",
+      "name": "AIGC标识与来源不完整",
+      "stage": "生成/发布/传播",
+      "control": "声明、水印、元数据、修改关系和来源证据"
+    },
+    {
+      "id": "grounding",
+      "name": "幻觉与无证据高影响结论",
+      "stage": "检索/输出",
+      "control": "来源引用、数值校验、无证据澄清、领域复核"
+    },
+    {
+      "id": "eval-integrity",
+      "name": "评测污染与裁判偏移",
+      "stage": "评测/发布",
+      "control": "留出集、盲审、不同裁判、后果隔离"
+    },
+    {
+      "id": "resource-abuse",
+      "name": "Token与资源滥用",
+      "stage": "网关/任务执行",
+      "control": "预算、配额、限流、最大步数、重试上限"
+    },
+    {
+      "id": "fairness",
+      "name": "人群、语言与场景差异",
+      "stage": "数据/评测/运营",
+      "control": "人群切片、语种分层、足够样本、差异复核"
+    },
+    {
+      "id": "supply-chain",
+      "name": "模型、数据与依赖供应链风险",
+      "stage": "训练/接入/部署",
+      "control": "来源、签名、许可证、依赖锁定与沙箱"
+    },
+    {
+      "id": "capability-risk",
+      "name": "高危能力与部署保障不足",
+      "stage": "模型评测/发布",
+      "control": "能力专项评测、部署限制、残余风险批准"
+    },
+    {
+      "id": "model-governance",
+      "name": "版本、策略与审计缺失",
+      "stage": "全链路",
+      "control": "不可变快照、政策版本、发布门禁、事件审计"
+    }
+  ]
+}
